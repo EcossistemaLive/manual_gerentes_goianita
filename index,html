@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Gerencial - O Maestro da Loja</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* 1. NÚCLEO DA IDENTIDADE VISUAL & TOKENS V6.0 */
+        :root {
+            --live-deep: #06192a;
+            --live-glass: rgba(10, 36, 61, 0.70);
+            --live-glass-hover: rgba(15, 45, 75, 0.85);
+            --glass-blur: blur(16px) saturate(180%);
+            
+            --live-accent: #00e800;
+            --live-accent-dim: rgba(0, 232, 0, 0.15);
+            --kinetic-gradient: linear-gradient(90deg, #ffffff 0%, #cccccc 50%, #00e800 100%);
+            
+            --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-fluid: cubic-bezier(0.4, 0.0, 0.2, 1);
+            
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-active: rgba(0, 232, 0, 0.4);
+            
+            --text-main: #daffde;
+            --text-light: #f5f5f5;
+            --text-muted: #a0aec0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--live-deep);
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-attachment: fixed;
+        }
+
+        /* LUZ DINÂMICA DE FUNDO */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 100vw; height: 100vh;
+            background: radial-gradient(circle at 50% 0%, var(--live-accent-dim) 0%, transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* TIPOGRAFIA */
+        h1, h2, h3, h4 {
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: clamp(40px, 6vw, 72px);
+            background: var(--kinetic-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            background: var(--kinetic-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .subtitle {
+            font-family: 'Merriweather', serif;
+            font-size: clamp(18px, 2vw, 24px);
+            color: #cccccc;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .accent-text {
+            color: var(--live-accent);
+            font-weight: 600;
+        }
+
+        .section-divider {
+            height: 4px;
+            width: 80px;
+            background-color: var(--live-accent);
+            border-radius: 2px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        /* COMPONENTES UI */
+        .glass-card {
+            background: var(--live-glass);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.4s var(--spring-bounce);
+            height: 100%;
+        }
+
+        .glass-card:hover {
+            background: var(--live-glass-hover);
+            border-color: var(--border-active);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 232, 0, 0.1);
+        }
+
+        /* GRIDS & LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* IMAGENS */
+        .image-wrapper {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #000;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .image-circle {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            border: 4px solid var(--border-subtle);
+            padding: 8px;
+            box-shadow: 0 0 40px rgba(0, 232, 0, 0.2);
+            margin: 0 auto;
+        }
+
+        .image-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* LISTAS PERSONALIZADAS */
+        .custom-bullets ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .custom-bullets li {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 25px;
+            font-size: 18px;
+        }
+        
+        .custom-bullets li::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--live-accent);
+            font-size: 24px;
+        }
+        
+        .custom-bullets strong {
+            color: var(--text-light);
+            font-size: 22px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* ÍCONES */
+        .icon-box {
+            font-size: 32px;
+            color: var(--live-accent);
+            margin-bottom: 20px;
+            background: var(--live-accent-dim);
+            padding: 20px;
+            border-radius: 50%;
+            border: 1px solid var(--border-active);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 75px;
+            height: 75px;
+        }
+
+        /* HEADER & FOOTER */
+        header {
+            padding: 120px 0 80px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-subtle);
+            background: rgba(6, 25, 42, 0.9);
+        }
+
+        .brand-logo {
+            height: 40px;
+            margin-bottom: 20px;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .footer-text a {
+            color: var(--live-accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA FINAL */
+        .cta-section {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(36px, 5vw, 64px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <!-- HEADER / HERO -->
+    <header>
+        <div class="container">
+            <h1>O Maestro da Loja</h1>
+            <p class="subtitle">Manual Definitivo de Rotinas Gerenciais</p>
+            <p style="max-width: 700px; margin: 0 auto; color: var(--text-muted);">
+                Este guia transforma a atuação do gerente de "apagador de incêndios" para estrategista de varejo.
+            </p>
+        </div>
+    </header>
+
+    <!-- INTRO: A ANALOGIA -->
+    <section>
+        <div class="container grid-2">
+            <div>
+                <div class="section-divider"></div>
+                <h2>A Analogia do Maestro</h2>
+                <p>Para que você compreenda profundamente a função de um gerente de loja, pense no maestro de uma orquestra.</p>
+                <p>O maestro não toca o violino, nem o piano. Porém, ele conhece a partitura inteira e sabe exatamente o momento em que cada músico deve entrar para que a sinfonia seja perfeita.</p>
+                <p>Da mesma forma, o gerente não deve passar o dia apenas operando o caixa ou empacotando produtos. <strong>Toda vez que executa as tarefas dos vendedores, ele os enfraquece.</strong></p>
+                <p style="font-family: 'Merriweather', serif; font-size: 22px; margin-top: 30px; border-left: 4px solid var(--live-accent); padding-left: 20px;">
+                    A sua missão é <span class="accent-text">alcançar objetivos através de outras pessoas</span>, ensinando-as a "pescar", e não apenas dando o "peixe".
+                </p>
+            </div>
+            <div class="image-wrapper" style="aspect-ratio: 4/5;">
+                <img src="http://googleusercontent.com/image_collection/image_retrieval/9346603584149911001" alt="Maestro conduzindo uma orquestra sinfônica">
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 1: DIÁRIO -->
+    <section style="background: rgba(255,255,255,0.02); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <div class="section-divider" style="margin: 0 auto 20px;"></div>
+                <h2>Módulo 1: Rotinas Diárias</h2>
+                <p class="subtitle">O Compasso do Dia a Dia</p>
+                <p style="max-width: 800px; margin: 0 auto;">Pense nestas rotinas como a afinação dos instrumentos antes do grande concerto (a abertura da loja para os clientes).</p>
+            </div>
+
+            <div class="grid-2" style="margin-bottom: 60px;">
+                <div class="image-wrapper" style="aspect-ratio: 16/9;">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/12605811741943600612" alt="Gerente de loja realizando briefing matinal com a equipe">
+                </div>
+                <div class="custom-bullets">
+                    <ul>
+                        <li>
+                            <strong>1. Chegada Antecipada</strong>
+                            Abra a loja, no mínimo, 30 minutos antes do horário normal, para coordenar a organização da equipe e checar o estoque antes do primeiro cliente entrar.
+                        </li>
+                        <li>
+                            <strong>2. A Visão "De Fora Para Dentro"</strong>
+                            Pare na frente da vitrine antes de entrar. Observe a loja com os olhos do cliente. Verifique a iluminação, limpeza dos vidros, organização do chão e dos expositores.
+                        </li>
+                        <li>
+                            <strong>3. Reunião Matinal (Briefing)</strong>
+                            Reúna seu time de vendas para repassar as metas. Como um técnico no vestiário antes do jogo, este é o momento de motivar, incentivar e passar o direcionamento da loja.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin-bottom: 40px; font-size: 32px;">Presença e Fechamento</h3>
+            <div class="grid-3">
+                <div class="glass-card">
+                    <div class="icon-box"><i class="fa-solid fa-eye"></i></div>
+                    <h3 style="margin-bottom: 15px; font-size: 20px;">Supervisão Contínua</h3>
+                    <p style="font-size: 16px;">Você perde o direito de agir naturalmente; você está num palco. Mantenha-se próximo à área de vendas e oriente proativamente a equipe a abordar clientes "perdidos".</p>
+                </div>
+                <div class="glass-card">
+                    <div class="icon-box"><i class="fa-solid fa-bolt"></i></div>
+                    <h3 style="margin-bottom: 15px; font-size: 20px;">Feedback Imediato</h3>
+                    <p style="font-size: 16px;">Se um vendedor falhar, oriente-o na hora (em particular). Esperar para o fim do dia desvincula a correção da atitude errada.</p>
+                </div>
+                <div class="glass-card">
+                    <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3 style="margin-bottom: 15px; font-size: 20px;">Avaliação e Fechamento</h3>
+                    <p style="font-size: 16px;">Fiscalize o fechamento do caixa e alimente as planilhas de indicadores (Taxa de Conversão, Ticket Médio). Deixe direcionamentos para a equipe do dia seguinte.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 2: SEMANAL/QUINZENAL -->
+    <section>
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <div class="section-divider" style="margin: 0 auto 20px;"></div>
+                <h2>Módulo 2: Rotinas Semanais</h2>
+                <p class="subtitle">Ajustando as Velas do Barco</p>
+                <p style="max-width: 800px; margin: 0 auto;">Se a rotina diária é remar, as rotinas semanais e quinzenais são o momento de olhar a bússola e ajustar a direção.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="glass-card" style="padding: 20px;">
+                    <div class="image-wrapper" style="aspect-ratio: 16/9; margin-bottom: 20px;">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/16277031312134631403" alt="Reunião individual entre gerente e vendedor">
+                    </div>
+                    <h3 style="color: var(--live-accent); margin-bottom: 10px; font-size: 20px;">Sessões Individuais</h3>
+                    <p style="font-size: 16px;">Reuniões semanais (30 min) com cada vendedor. Use indicadores como "termômetro". Avalie se o gargalo é conversão (técnica) ou baixo fluxo (prospecção).</p>
+                </div>
+                
+                <div class="glass-card" style="padding: 20px;">
+                    <div class="image-wrapper" style="aspect-ratio: 16/9; margin-bottom: 20px;">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/12891459644339131602" alt="Vitrine de loja com visual merchandising moderno">
+                    </div>
+                    <h3 style="color: var(--live-accent); margin-bottom: 10px; font-size: 20px;">Visual Merchandising</h3>
+                    <p style="font-size: 16px;">A vitrine é o convite da loja. Promova a troca de produtos na vitrine e nos displays internos semanalmente. Fotografe e envie para a supervisão.</p>
+                </div>
+
+                <div class="glass-card" style="padding: 20px;">
+                    <div class="image-wrapper" style="aspect-ratio: 16/9; margin-bottom: 20px;">
+                        <img src="http://googleusercontent.com/image_collection/image_retrieval/52278382062952024" alt="Reunião geral com equipe de loja">
+                    </div>
+                    <h3 style="color: var(--live-accent); margin-bottom: 10px; font-size: 20px;">Reunião Quinzenal</h3>
+                    <p style="font-size: 16px;">Duração máxima de 40 minutos em dias de menor movimento. Pauta: avaliação de metas, treinamento de vendas e aprofundamento em mix de produtos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 3: MENSAL -->
+    <section style="background: rgba(255,255,255,0.02); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="container grid-2">
+            <div>
+                <div class="section-divider"></div>
+                <h2>Módulo 3: Gestão Mensal</h2>
+                <p class="subtitle">A Colheita e o Plantio</p>
+                <p>O fechamento do mês exige do gerente um perfil mais analítico e financeiro. É a hora de apurar os resultados da "orquestra".</p>
+                
+                <div class="custom-bullets" style="margin-top: 40px;">
+                    <ul>
+                        <li>
+                            <strong>Inventário e Estoque</strong>
+                            Organize a contagem de estoque para comparar o físico com o sistema (redução de perdas). Siga a regra de giro: PEPS/PVPS (primeiro a entrar/vencer, primeiro a sair).
+                        </li>
+                        <li>
+                            <strong>Fechamento e Resultados</strong>
+                            Envie notas, cupons e planilhas de comissões para a contabilidade. Elabore relatórios para a diretoria comparando resultados x metas.
+                        </li>
+                        <li>
+                            <strong>Planejamento Estratégico</strong>
+                            Defina as metas (Mínimas, Básicas e Master) de cada vendedor para o novo período e apresente-as na primeira reunião do mês.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <div class="image-wrapper" style="aspect-ratio: 4/5;">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/8439751781426191476" alt="Gerenciamento de estoque no varejo com tablet">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MÓDULO 4: REGRAS DE OURO -->
+    <section>
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 60px;">
+                <div class="section-divider" style="margin: 0 auto 20px;"></div>
+                <h2>Módulo 4: Regras de Ouro</h2>
+                <p class="subtitle">Comportamento e Liderança do Gerente</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="image-circle">
+                    <img src="http://googleusercontent.com/image_collection/image_retrieval/11639972579572975096" alt="Retrato profissional de um líder confiante">
+                </div>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div class="glass-card" style="padding: 25px;">
+                        <h4 style="color: var(--live-accent); font-size: 22px; margin-bottom: 10px;">1. A Regra da Disciplina</h4>
+                        <p style="font-size: 17px; margin: 0;">As normas da loja não são negociáveis. O principal motivo pelo qual os gerentes fracassam é achar difícil manter as regras. Lembre-se: advertência não é punição, é educação.</p>
+                    </div>
+                    <div class="glass-card" style="padding: 25px;">
+                        <h4 style="color: var(--live-accent); font-size: 22px; margin-bottom: 10px;">2. Recrutamento Estratégico</h4>
+                        <p style="font-size: 17px; margin: 0;">Nunca contrate por "desespero" só para tapar um buraco na escala. Contrate pela atitude e pelo alinhamento aos valores da empresa.</p>
+                    </div>
+                    <div class="glass-card" style="padding: 25px;">
+                        <h4 style="color: var(--live-accent); font-size: 22px; margin-bottom: 10px;">3. Seja o Exemplo Absoluto</h4>
+                        <p style="font-size: 17px; margin: 0;">Um gerente é um líder observado atentamente. A partir do seu exemplo, toda a equipe replicará seu comportamento. Lidere com resiliência e inteligência emocional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Pronto para reger sua orquestra?</h2>
+            <p class="subtitle" style="margin-top: 20px;">Ao dominar estas ferramentas, você deixa de ser um "apagador de incêndios" e se torna o verdadeiro estrategista do seu negócio.</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <img class="brand-logo" src="https://raw.githubusercontent.com/Clebito2/ConsultoriaLive/main/Logo%20live%20oficial-21.png" alt="Live Consultoria Logo">
+            <p class="footer-text">
+                &copy; 2026 Powered by <a href="mailto:cleberdonato@ecossistemalive.com.br">Cléber Donato</a> | Live Consultoria
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
+```
