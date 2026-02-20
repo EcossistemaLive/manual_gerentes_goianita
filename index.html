@@ -41,7 +41,6 @@
 
             /* Animação */
             --ease-fluid: cubic-bezier(0.4, 0.0, 0.2, 1);
-            --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         * {
@@ -70,8 +69,8 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(6, 25, 42, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(6, 25, 42, 0.85);
+            backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-subtle);
             padding: 1rem 0;
         }
@@ -133,33 +132,38 @@
             }
         }
 
-        /* --- MANUAL DO MAESTRO STYLES (Existing) --- */
+        /* --- COMMON STYLES --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 25px;
         }
 
+        .glass-card {
+            background: var(--live-glass);
+            backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: 0.3s;
+        }
+
+        .glass-card:hover {
+            border-color: var(--border-active);
+            background: var(--live-glass-hover);
+        }
+
+        /* --- MANUAL DO MAESTRO STYLES --- */
         header.manual-header {
-            min-height: 70vh;
+            min-height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 60px 20px;
             background: radial-gradient(circle at center, var(--live-accent-dim) 0%, transparent 70%);
-            position: relative;
-            padding: 80px 20px;
-        }
-
-        h1.manual-title {
-            font-size: clamp(40px, 7vw, 80px);
-            background: var(--kinetic-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            font-weight: 700;
         }
 
         .badge {
@@ -171,35 +175,51 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        section.manual-section {
-            padding: 100px 0;
+        h1 {
+            font-size: clamp(35px, 6vw, 70px);
+            background: var(--kinetic-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: clamp(1rem, 2vw, 1.4rem);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .manual-section {
+            padding: 60px 0;
             border-bottom: 1px solid var(--border-subtle);
         }
 
-        h2.manual-h2 {
-            font-size: clamp(28px, 4vw, 42px);
-            color: var(--text-light);
+        h2 {
+            font-size: clamp(24px, 4vw, 36px);
+            color: #fff;
             margin-bottom: 30px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
         }
 
-        h2.manual-h2 i {
+        h2 i {
             color: var(--live-accent);
-            font-size: 0.8em;
         }
 
         .module-intro {
             font-family: 'Merriweather', serif;
-            font-size: clamp(18px, 2vw, 22px);
+            font-size: clamp(18px, 1.5vw, 22px);
             color: #cbd5e0;
-            margin-bottom: 50px;
-            border-left: 5px solid var(--live-accent);
-            padding-left: 25px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--live-accent);
+            padding-left: 20px;
             font-style: italic;
         }
 
@@ -207,44 +227,31 @@
             background: var(--live-glass);
             border: 1px solid var(--border-subtle);
             border-radius: 24px;
-            padding: clamp(25px, 5vw, 50px);
-            margin-bottom: 40px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            padding: 2rem;
+            margin-bottom: 30px;
+            transition: 0.3s;
         }
 
         .tech-card:hover {
             border-color: var(--live-accent);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         .step-title {
-            font-size: clamp(20px, 3vw, 28px);
+            font-size: 1.5rem;
             color: var(--live-accent);
-            margin-bottom: 20px;
-            font-weight: 600;
+            font-weight: 700;
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .instruction-block {
-            background: rgba(0, 0, 0, 0.25);
-            padding: clamp(20px, 3vw, 30px);
-            border-radius: 16px;
-            margin-top: 25px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 20px;
             border-left: 3px solid var(--live-accent-dim);
-        }
-
-        .instruction-block h4 {
-            color: #a2ffae;
-            font-size: 16px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         ul.check-list {
@@ -253,9 +260,9 @@
 
         ul.check-list li {
             position: relative;
-            padding-left: 40px;
-            margin-bottom: 18px;
-            font-size: 17px;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1.05rem;
         }
 
         ul.check-list li::before {
@@ -264,342 +271,98 @@
             font-weight: 900;
             position: absolute;
             left: 0;
-            top: 2px;
             color: var(--live-accent);
-            font-size: 20px;
         }
 
         .why-tag {
             display: inline-block;
-            background: rgba(0, 232, 0, 0.1);
-            padding: 4px 14px;
-            border-radius: 30px;
-            font-size: 13px;
+            background: var(--live-accent-dim);
             color: var(--live-accent);
-            margin-bottom: 15px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
-            border: 1px solid var(--live-accent-dim);
+            margin-bottom: 15px;
         }
 
         .img-box {
             width: 100%;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             border: 1px solid var(--border-subtle);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            background: #04111d;
+            background: #000;
         }
 
         .img-box img {
             width: 100%;
             display: block;
             object-fit: cover;
-            height: clamp(250px, 40vh, 450px);
-            transition: 0.5s;
+            height: clamp(250px, 35vh, 400px);
         }
 
-        .img-box:hover img {
-            transform: scale(1.03);
-        }
-
-        /* --- CRONOGRAMA DE ESTOQUE STYLES (User Request) --- */
-        .cronograma-container {
-            padding: 2rem 0;
-        }
-
+        /* --- CRONOGRAMA STYLES --- */
         .btn-action {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            background: rgba(0, 232, 0, 0.1);
-            color: var(--live-accent);
-            padding: 0.6rem 1.2rem;
+            gap: 10px;
+            background: var(--live-accent);
+            color: var(--live-deep);
+            padding: 12px 24px;
             border-radius: 8px;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            border: 1px solid rgba(0, 232, 0, 0.2);
-            transition: all 0.2s;
-            cursor: pointer;
+            transition: 0.3s;
         }
 
         .btn-action:hover {
-            background: rgba(0, 232, 0, 0.2);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 232, 0, 0.1);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            border: 1px solid var(--border-subtle);
-            color: var(--text-secondary);
-            padding: 0.4rem 1rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: 0.2s;
-            margin-top: 1rem;
-        }
-
-        .btn-ghost:hover {
-            border-color: var(--live-accent);
-            color: var(--live-accent);
-        }
-
-        .procedure-box {
-            display: none;
-            margin-top: 1rem;
-            padding: 1rem;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 8px;
-            border: 1px dashed var(--border-subtle);
-        }
-
-        .procedure-step {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            align-items: flex-start;
-        }
-
-        .step-num {
-            background: var(--live-accent);
-            color: #000;
-            font-weight: 800;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .step-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .step-text strong {
-            color: var(--text-primary);
-            display: block;
-            margin-bottom: 0.2rem;
-        }
-
-        .divergence-alert {
-            background: rgba(255, 69, 58, 0.1);
-            border-left: 3px solid #ff453a;
-            padding: 0.75rem;
-            font-size: 0.85rem;
-            color: #ffcccb;
-            margin-top: 0.5rem;
-            border-radius: 4px;
-        }
-
-        .efficiency-alert {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.75rem;
-            padding: 0.5rem 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 2px solid var(--live-accent);
-            border-radius: 0 4px 4px 0;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .efficiency-alert strong {
-            color: var(--live-accent);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .team-badge {
-            display: inline-flex;
-            align-items: center;
-            background: var(--live-accent-dim);
-            color: var(--live-accent);
-            padding: 0.25rem 0.75rem;
-            border-radius: 99px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            border: 1px solid rgba(0, 232, 0, 0.2);
-        }
-
-        .team-names {
-            font-size: 1.25rem;
-            font-weight: 500;
-        }
-
-        .timeline-item {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        .time-block {
-            min-width: 120px;
-            text-align: right;
-        }
-
-        .time {
-            font-weight: 700;
-            color: var(--live-accent);
-            font-size: 1.1rem;
-        }
-
-        .phase {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .content h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-        }
-
-        .content ul {
-            list-style: none;
-        }
-
-        .content li {
-            position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.85rem;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-        }
-
-        .content li::before {
-            content: "•";
-            color: var(--live-accent);
-            position: absolute;
-            left: 0;
-            font-weight: bold;
-        }
-
-        .instruction {
-            display: block;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            font-style: italic;
-            margin-top: 4px;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 4px 8px;
-            border-radius: 4px;
-            border-left: 2px solid var(--text-tertiary);
-        }
-
-        .logistics-box {
-            background: linear-gradient(90deg, rgba(0, 232, 0, 0.05) 0%, transparent 100%);
-            border-left: 4px solid var(--live-accent);
-            padding: 1rem 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin: 1.5rem 0;
-        }
-
-        .logistics-title {
-            color: var(--live-accent);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            transform: translateY(-2px);
+            filter: brightness(1.1);
         }
 
         .weekly-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
+            gap: 1.5rem;
         }
 
         .day-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 1.25rem;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            transition: 0.3s;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-subtle);
         }
 
         .day-card:hover {
-            border-color: var(--border-active);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--live-accent);
         }
 
         .day-header {
             color: var(--live-accent);
-            font-weight: 700;
+            font-weight: 800;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
             display: flex;
             justify-content: space-between;
+            margin-bottom: 10px;
         }
 
         .day-focus {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-primary);
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        .day-action {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* --- FOOTER --- */
         footer {
-            padding: 100px 0;
+            padding: 80px 0;
             text-align: center;
-            background: #030d16;
             border-top: 1px solid var(--border-subtle);
+            background: var(--live-darker);
         }
 
         .footer-logo {
-            height: 60px;
-            margin-bottom: 25px;
-        }
-
-        @media (max-width: 900px) {
-            .tabs-container {
-                gap: 1rem;
-            }
-
-            .tab-trigger {
-                font-size: 0.9rem;
-            }
-
-            .timeline-item {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .time-block {
-                text-align: left;
-                display: flex;
-                align-items: baseline;
-                gap: 0.5rem;
-            }
+            height: 50px;
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -613,22 +376,21 @@
         </div>
     </nav>
 
-    <!-- CONTENT: MANUAL DO MAESTRO -->
+    <!-- MAIN: MANUAL DO MAESTRO -->
     <main id="manual" class="tab-content active">
         <header class="manual-header">
             <div class="container">
                 <span class="badge">Live Consultoria V6.0</span>
-                <h1 class="manual-title">O MAESTRO DA LOJA</h1>
-                <p class="subtitle" style="font-size: 26px; color: #a0aec0; max-width: 850px;">A fundação de um negócio
-                    sólido reside na disciplina tática do seu gestor.</p>
+                <h1>O MAESTRO DA LOJA</h1>
+                <p class="subtitle">A fundação de um negócio sólido reside na disciplina tática do seu gestor.</p>
 
-                <div class="img-box" style="max-width: 900px; margin-top: 50px;">
-                    <img src="https://images.unsplash.com/photo-1556740734-7f9a2b77d5ec?q=80&w=1200&auto=format&fit=crop"
-                        alt="[Estratégia de Negócios Varejo]"
-                        onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Estrategia+Varejo'">
+                <div class="img-box" style="margin-top: 40px; max-width: 900px;">
+                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=1200&auto=format&fit=crop"
+                        alt="Retail Management Strategy">
                 </div>
 
-                <p style="font-family: 'Merriweather', serif; font-size: 18px; margin-top: 30px; max-width: 700px;">
+                <p
+                    style="margin-top: 30px; font-family: 'Merriweather', serif; font-size: 1.1rem; max-width: 750px; color: #e2e8f0; font-style: italic;">
                     "Pense nestas atribuições como a fundação de uma casa: o cliente não vê a fundação, mas sem ela, as
                     paredes — as vendas e o atendimento — desmoronam."
                 </p>
@@ -636,11 +398,11 @@
         </header>
 
         <div class="container">
+            <!-- Módulo 1 -->
             <section id="modulo1" class="manual-section">
-                <h2 class="manual-h2"><i class="fa-solid fa-clock"></i> Módulo 1: O Compasso Diário</h2>
+                <h2><i class="fa-solid fa-clock"></i> Módulo 1: O Compasso Diário</h2>
                 <p class="module-intro">"O dia a dia é o ensaio geral. Sem afinação rigorosa antes da abertura, o
-                    concerto
-                    será um desastre."</p>
+                    concerto será um desastre."</p>
 
                 <div class="tech-card">
                     <div class="step-title"><span>1. Abertura e Inspeção 5S</span><small>08:00 - 08:30</small></div>
@@ -648,8 +410,7 @@
                     <div class="instruction-block">
                         <ul class="check-list">
                             <li><strong>Visão Externa:</strong> Observe a vitrina com os olhos do cliente. Vidros limpos
-                                e
-                                luzes focadas valorizam o produto em 50%.</li>
+                                e luzes focadas valorizam o produto em 50%.</li>
                             <li><strong>Sensos de Ordenação:</strong> Balcão limpo, sem casacos ou chávenas de café. O
                                 balcão é ferramenta de venda.</li>
                             <li><strong>Check de Infraestrutura:</strong> Teste terminais e sistemas. Não espere a fila
@@ -663,73 +424,179 @@
                     <p>O briefing não é para "dar avisos", é para definir a estratégia de vitória do dia.</p>
                     <div class="instruction-block">
                         <ul class="check-list">
-                            <li><strong>Produtos Foco:</strong> Repasse os itens de foco **definidos pela gestão**.</li>
+                            <li><strong>Produtos Foco:</strong> Repasse os itens de foco definidos pela gestão.</li>
                             <li><strong>Metas do Dia:</strong> Distribua o objetivo global por cada vendedor de forma
-                                clara.
-                            </li>
+                                clara.</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
+            <!-- Módulo 2 -->
             <section id="modulo2" class="manual-section">
-                <h2 class="manual-h2"><i class="fa-solid fa-calendar-check"></i> Módulo 2: O Ajuste das Velas</h2>
+                <h2><i class="fa-solid fa-calendar-check"></i> Módulo 2: O Ajuste das Velas</h2>
                 <div class="tech-card">
                     <div class="step-title"><span>Visual Merchandising & Vitrina</span></div>
                     <div class="img-box">
-                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop"
-                            alt="Visual Merchandising Premium"
-                            onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Prateleira+de+Panelas'">
+                        <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e12?q=80&w=1200&auto=format&fit=crop"
+                            alt="Retail Visual Merchandising">
                     </div>
                     <div class="why-tag">FUNDAÇÃO: Renovação do Desejo</div>
                     <div class="instruction-block">
                         <ul class="check-list">
                             <li><strong>Troca Semanal:</strong> Altere os cenários toda a segunda-feira. Uma vitrina
-                                parada
-                                vira paisagem.</li>
+                                parada vira paisagem.</li>
                             <li><strong>Cross-Merchandising:</strong> Ao expor panelas, coloque tábuas e utensílios ao
-                                lado
-                                para aumentar o ticket.</li>
+                                lado para aumentar o ticket.</li>
                             <li><strong>Hierarquia Visual:</strong> Use diferentes alturas para guiar o olhar do
-                                cliente.
+                                cliente.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 3 -->
+            <section id="modulo3" class="manual-section">
+                <h2><i class="fa-solid fa-chart-line"></i> Módulo 3: A Colheita e o Plantio</h2>
+                <p class="module-intro">"O fechamento exige precisão analítica para garantir que o físico bata com o
+                    financeiro."</p>
+                <div class="tech-card">
+                    <div class="step-title"><span>Inventário e Resultados</span></div>
+                    <div class="why-tag">FUNDAÇÃO: Acuracidade Financeira</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Contagem Rotativa:</strong> Coordene a contagem por categorias para evitar furos
+                                de estoque.</li>
+                            <li><strong>Regra PEPS:</strong> Garanta que o estoque antigo saia primeiro (Primeiro que
+                                Entra, Primeiro que Sai).</li>
+                            <li><strong>Relatórios à Diretoria:</strong> Elabore análises de desempenho vs metas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 4 -->
+            <section id="modulo4" class="manual-section">
+                <h2><i class="fa-solid fa-user-tie"></i> Módulo 4: O Comportamento do Líder</h2>
+                <div class="tech-card">
+                    <div class="step-title"><span>Regras de Ouro</span></div>
+                    <div class="why-tag">FUNDAÇÃO: Autoridade e Cultura</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Disciplina Inegociável:</strong> Normas não são sugestões. Manter as regras é o
+                                que sustenta o comando.</li>
+                            <li><strong>Seja o Exemplo:</strong> A equipa é o reflexo da rotina e da postura do seu
+                                gestor.</li>
+                            <li><strong>Inteligência Emocional:</strong> Mantenha a calma em crises.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 5 -->
+            <section id="modulo5" class="manual-section">
+                <h2><i class="fa-solid fa-users-gear"></i> Módulo 5: Administração de Pessoal e RH</h2>
+                <p class="module-intro">"O gerente é o primeiro filtro da empresa. Se a porta falha, a engrenagem humana
+                    adoece."</p>
+                <div class="tech-card">
+                    <div class="step-title"><span>Recrutamento e Integração</span></div>
+                    <div class="why-tag">FUNDAÇÃO: Qualidade do Capital Humano</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Checagem de Referências:</strong> Obrigatório ligar para antigos empregadores.
+                            </li>
+                            <li><strong>Onboarding:</strong> Acompanhe o novato passo a passo na cultura da marca.</li>
+                            <li><strong>Gestão Trabalhista:</strong> Controle rigoroso de ponto e escalas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 6 -->
+            <section id="modulo6" class="manual-section">
+                <h2><i class="fa-solid fa-chess-knight"></i> Módulo 6: Inteligência de Mercado</h2>
+                <div class="tech-card">
+                    <div class="step-title"><span>Monitoramento Estratégico</span></div>
+                    <div class="why-tag">FUNDAÇÃO: Vantagem Competitiva</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Visão de Tabuleiro:</strong> Conheça os vizinhos concorrentes e seus preços.
+                            </li>
+                            <li><strong>Planeamento de Promoções:</strong> Verifique o estoque antes de lançar ações.
                             </li>
                         </ul>
                     </div>
                 </div>
             </section>
 
+            <!-- Módulo 7 -->
             <section id="modulo7" class="manual-section">
-                <h2 class="manual-h2"><i class="fa-solid fa-boxes-stacked"></i> Módulo 7: Operações Logísticas e Stock
-                </h2>
+                <h2><i class="fa-solid fa-boxes-stacked"></i> Módulo 7: Operações Logísticas e Estoque</h2>
                 <div class="tech-card">
                     <div class="step-title"><span>Recebimento Impecável</span></div>
                     <div class="why-tag">FUNDAÇÃO: Proteção do Ativo</div>
                     <div class="instruction-block">
                         <ul class="check-list">
-                            <li><strong>Conferência Física:</strong> O gerente deve validar quantidade e estado das
-                                embalagens comparando com a Nota Fiscal (NFe).</li>
-                            <li><strong>Tratativa de Erros:</strong> Se houver falta ou violação, anote na NFe e
-                                comunique o
-                                financeiro e compras imediatamente.</li>
-                            <li><strong>Venda Inteligente:</strong> Incentive a equipa a vender mercadorias antigas; o
-                                estoque parado é dinheiro que dorme.</li>
+                            <li><strong>Conferência Física:</strong> Validar quantidade e estado das embalagens (NFe).
+                            </li>
+                            <li><strong>Tratativa de Erros:</strong> Comunique faltas ou violações imediatamente.</li>
+                            <li><strong>Venda Inteligente:</strong> Incentive a saída de mercadorias antigas.</li>
                         </ul>
                     </div>
                 </div>
             </section>
 
-            <p style="text-align: center; color: var(--text-dim); margin: 2rem 0;">(Outros módulos disponíveis no manual
-                completo)</p>
+            <!-- Módulo 8 -->
+            <section id="modulo8" class="manual-section">
+                <h2><i class="fa-solid fa-file-invoice-dollar"></i> Módulo 8: Gestão Financeira</h2>
+                <div class="tech-card">
+                    <div class="step-title"><span>Controle de Caixa e Despesas</span></div>
+                    <div class="why-tag">FUNDAÇÃO: Saúde do Fluxo de Caixa</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Fechamento Pessoal:</strong> Fiscalize o caixa diariamente.</li>
+                            <li><strong>Envio de Notas:</strong> Envie notas fiscais no mesmo dia do recebimento.</li>
+                            <li><strong>Rigor com Despesas:</strong> Controle gastos e exija comprovantes fiscais.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Módulo 9 -->
+            <section id="modulo9" class="manual-section" style="border-bottom: none;">
+                <h2><i class="fa-solid fa-handshake-angle"></i> Módulo 9: Gestão de Conflitos</h2>
+                <div class="tech-card">
+                    <div class="step-title"><span>Tratativa de Reclamações</span></div>
+                    <div class="why-tag">FUNDAÇÃO: Fidelização (LTV)</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Assuma a Frente:</strong> Reclamações críticas exigem a presença do gerente.
+                            </li>
+                            <li><strong>Troca como Venda:</strong> Transforme a troca em oportunidade de fidelização.
+                            </li>
+                            <li><strong>Domínio Político:</strong> Conheça a fundo a política de trocas da empresa.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tech-card"
+                    style="margin-top: 40px; text-align: center; background: var(--live-accent-dim);">
+                    <h3
+                        style="font-family: 'Merriweather', serif; font-style: italic; color: var(--live-accent); font-size: 1.5rem;">
+                        "Dominar a operação de ponta a ponta é o que transforma o chefe de vendas num verdadeiro Gestor
+                        de Negócios."
+                    </h3>
+                </div>
+            </section>
         </div>
     </main>
 
-    <!-- CONTENT: CRONOGRAMA DE ESTOQUE -->
+    <!-- MAIN: CRONOGRAMA DE ESTOQUE -->
     <main id="cronograma" class="tab-content">
-        <div class="container cronograma-container">
-            <header style="text-align: center; margin-bottom: 3rem;">
+        <div class="container" style="padding: 40px 0;">
+            <header style="text-align: center; margin-bottom: 50px;">
                 <h1>Gestão de Estoque 5S</h1>
                 <p class="subtitle">Casa Goianita • Manual de Operações & Rotinas 2026</p>
-                <div style="margin-top: 1.5rem;">
+                <div style="margin-top: 25px;">
                     <a href="https://drive.google.com/file/d/1LezPS56TU-UYPzIyGKTDiz_PAZUsuuh2/view?usp=sharing"
                         target="_blank" class="btn-action">
                         <i data-lucide="book-open" size="18"></i> Acessar Manual 5S Completo
@@ -737,172 +604,64 @@
                 </div>
             </header>
 
-            <section class="team-grid">
+            <div class="team-grid">
                 <div class="glass-card">
                     <div class="team-badge"><i data-lucide="map-pin" size="14"></i> &nbsp; Unidade T4</div>
                     <div class="team-names">Lucas</div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Responsável Geral T4
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Responsável Geral T4
                     </p>
                 </div>
                 <div class="glass-card">
                     <div class="team-badge"><i data-lucide="map-pin" size="14"></i> &nbsp; Unidade 85</div>
                     <div class="team-names">Márcio & Jayme</div>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Responsáveis Gerais
-                        85</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 5px;">Responsáveis Gerais 85
+                    </p>
                 </div>
-            </section>
+            </div>
 
-            <section>
-                <div class="glass-card">
-                    <h2><i data-lucide="truck" color="#00e800"></i> Protocolo de Logística e Motorista</h2>
-                    <div class="logistics-box">
-                        <div class="logistics-title">
-                            <i data-lucide="alert-circle" size="18"></i> Regra de Ouro: Preparação Antecipada
-                        </div>
-                        <p style="font-size: 0.95rem; color: var(--text-secondary);">
-                            A coleta do motorista é <strong>flexível</strong> (pode ocorrer a qualquer hora conforme a
-                            rota), mas a preparação do estoque é <strong>fixa (manhã)</strong>.
-                        </p>
-                    </div>
-                    <ul style="color: var(--text-secondary); padding-left: 1.5rem; margin-top: 1rem;">
-                        <li style="margin-bottom: 0.5rem;"><strong>08:00 - 09:30:</strong> Horário obrigatório para
-                            separar transferências e entradas no sistema, independente de onde o motorista esteja.</li>
-                        <li style="margin-bottom: 0.5rem;"><strong>Modus Operandi:</strong> Quando o motorista chegar
-                            para coleta (seja 10h ou 14h), a carga já deve estar separada, conferida e na zona de
-                            expedição. O motorista não espera separação.</li>
-                        <li><strong>Coletas de Clientes:</strong> Itens vendidos para retirada em outra loja têm
-                            prioridade absoluta na separação matinal.</li>
-                    </ul>
+            <div class="glass-card">
+                <h2><i data-lucide="truck"></i> Protocolo de Logística</h2>
+                <div class="logistics-box">
+                    <div class="logistics-title"><i data-lucide="alert-circle" size="20"></i> Regra de Ouro</div>
+                    <p style="color: var(--text-secondary);">Separação de estoque é <strong>fixa (manhã)</strong>,
+                        coleta de motorista é flexível.</p>
                 </div>
-            </section>
+                <ul class="check-list" style="color: var(--text-secondary);">
+                    <li><strong>08:00 - 09:30:</strong> Horário obrigatório para separar transferências.</li>
+                    <li>O motorista não espera separação.</li>
+                </ul>
+            </div>
 
-            <section>
-                <div class="glass-card">
-                    <h2><i data-lucide="clock" color="#00e800"></i> Rotina Diária Padrão (Seg-Sex)</h2>
-
-                    <div class="timeline-item">
-                        <div class="time-block">
-                            <div class="time">08:00 - 09:30</div>
-                            <div class="phase">Bloco Crítico</div>
-                        </div>
-                        <div class="content">
-                            <h3>Transferências & Expedição</h3>
-                            <ul>
-                                <li>Verificar Dashboard de Transferências (Pedidos da 85/T4).
-                                    <span class="instruction">Na prática: Acesse o sistema > Transferências > Filtre
-                                        "Aguardando Separação".</span>
-                                </li>
-                                <li>Separar itens físicos e dar baixa imediata via Coletor.
-                                    <span class="instruction">Na prática: Bipe item por item antes de colocar na caixa.
-                                        Nunca dê baixa em lote sem conferir.</span>
-                                </li>
-                                <li>Organizar zona de expedição para chegada do motorista.
-                                    <span class="instruction">Na prática: Identifique as caixas com fita adesiva ou
-                                        canetão (ex: DESTINO T4) e deixe na área de saída.</span>
-                                </li>
-                            </ul>
-                            <div class="efficiency-alert">
-                                <i data-lucide="zap" size="16"></i>
-                                <span>
-                                    <strong>Nota de Eficiência:</strong> Esta atividade pode ser concluída em menos
-                                    tempo. Inicie imediatamente o próximo bloco (Recebimento) assim que finalizar esta
-                                    etapa.
-                                </span>
-                            </div>
-                        </div>
+            <div class="glass-card">
+                <h2><i data-lucide="calendar"></i> Foco Semanal 5S</h2>
+                <div class="weekly-grid">
+                    <div class="day-card">
+                        <div class="day-header">SEG <i data-lucide="check-square" size="16"></i></div>
+                        <div class="day-focus">Auditoria</div>
+                        <div class="day-action">Revisar pendências do final de semana.</div>
                     </div>
-
-                    <div class="timeline-item">
-                        <div class="time-block">
-                            <div class="time">09:00 - 11:00</div>
-                            <div class="phase">Recebimento</div>
-                        </div>
-                        <div class="content">
-                            <h3>Entrada Inteligente (XML)</h3>
-                            <ul>
-                                <li><strong>Responsabilidade:</strong> Kuruka (Compras) insere o XML no sistema.
-                                    <span class="instruction">Na prática: Confirme com Compras se a nota já foi
-                                        importada antes de começar a bipar.</span>
-                                </li>
-                                <li>Conferência Cega (Bipagem) obrigatória.
-                                    <span class="instruction">Na prática: Use o coletor. O sistema deve apitar "Verde"
-                                        para Ok e "Vermelho" para divergência.</span>
-                                </li>
-                                <li><strong>Seiri (Triagem):</strong> Identificar avarias no ato da entrada.
-                                    <span class="instruction">Na prática: Manuseie com cuidado extremo. Não balance as
-                                        caixas. Abra e verifique visualmente trincas ou barulho de cacos soltos.</span>
-                                </li>
-                                <li>Endereçamento imediato: Bipar Produto + Prateleira.
-                                    <span class="instruction">Na prática: Guardou? Bipe o produto e em seguida a
-                                        etiqueta da prateleira para vincular o endereço.</span>
-                                </li>
-                            </ul>
-
-                            <button onclick="toggleProcedure()" class="btn-ghost">
-                                <i data-lucide="clipboard-check" size="16"></i> Protocolo Sistêmico de Conferência
-                                (Clique para Abrir)
-                            </button>
-
-                            <div id="procedure-box" class="procedure-box">
-                                <div class="procedure-step">
-                                    <div class="step-num">1</div>
-                                    <div class="step-text">
-                                        <strong>Envio das Notas (Kuruka/Compras)</strong>
-                                        Vá em <em>Menu > Suprimentos > Notas de Entrada</em>. Selecione as notas e
-                                        clique em "Mais Ações" > "Enviar para conferência".
-                                    </div>
-                                </div>
-                                <div class="procedure-step">
-                                    <div class="step-num">2</div>
-                                    <div class="step-text">
-                                        <strong>Recebimento de Volumes (Caixas)</strong>
-                                        Acesse <em>Menu > Suprimentos > Conferência de Compra</em>. Na aba "Aguardando
-                                        entrada", clique em "Receber mercadorias".
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="day-card">
+                        <div class="day-header">TER <i data-lucide="package" size="16"></i></div>
+                        <div class="day-focus">Pesados</div>
+                        <div class="day-action">Organizar zona de itens pesados.</div>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-header">QUA <i data-lucide="grid" size="16"></i></div>
+                        <div class="day-focus">Miudezas</div>
+                        <div class="day-action">Organizar talheres e utensílios.</div>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-header">QUI <i data-lucide="wine" size="16"></i></div>
+                        <div class="day-focus">Vidros</div>
+                        <div class="day-action">Inspeção de taças e cristais.</div>
+                    </div>
+                    <div class="day-card">
+                        <div class="day-header">SEX <i data-lucide="tag" size="16"></i></div>
+                        <div class="day-focus">Outlet</div>
+                        <div class="day-action">Precificação de itens avulsos.</div>
                     </div>
                 </div>
-            </section>
-
-            <section>
-                <div class="glass-card">
-                    <h2><i data-lucide="calendar" color="#00e800"></i> Foco Semanal (Rodízio 5S)</h2>
-                    <div class="weekly-grid">
-                        <div class="day-card">
-                            <div class="day-header">Segunda <i data-lucide="clipboard-list" size="16"></i></div>
-                            <div class="day-focus">Auditoria de Transferências</div>
-                            <div class="day-action">Revisar pendências de Sábado/Domingo.</div>
-                        </div>
-                        <div class="day-card">
-                            <div class="day-header">Terça <i data-lucide="package" size="16"></i></div>
-                            <div class="day-focus">Zona Baixa (Pesados)</div>
-                            <div class="day-action">Eletrodomésticos e Caixas Fechadas.</div>
-                        </div>
-                        <div class="day-card">
-                            <div class="day-header">Quarta <i data-lucide="grid" size="16"></i></div>
-                            <div class="day-focus">Zona Média (Miudezas)</div>
-                            <div class="day-action">Talheres e Utensílios.</div>
-                        </div>
-                        <div class="day-card">
-                            <div class="day-header">Quinta <i data-lucide="wine" size="16"></i></div>
-                            <div class="day-focus">Zona Alta & Vidros</div>
-                            <div class="day-action">Cristais e Taças.</div>
-                        </div>
-                        <div class="day-card">
-                            <div class="day-header">Sexta <i data-lucide="tag" size="16"></i></div>
-                            <div class="day-focus">Outlet & Curva A</div>
-                            <div class="day-action">Levar itens da "Caixa Oportunidade" para Gerência.</div>
-                        </div>
-                        <div class="day-card" style="border-color: var(--live-accent-dim);">
-                            <div class="day-header">Sábado <i data-lucide="shopping-bag" size="16"></i></div>
-                            <div class="day-focus">Suporte Total à Venda</div>
-                            <div class="day-action">Foco exclusivo em agilidade de entrega no balcão.</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            </div>
         </div>
     </main>
 
@@ -910,7 +669,7 @@
         <div class="container">
             <img src="https://raw.githubusercontent.com/Clebito2/ConsultoriaLive/main/Logo%20live%20oficial-21.png"
                 alt="Live Consultoria" class="footer-logo">
-            <p style="color: #64748b; font-size: 15px; letter-spacing: 1px;">
+            <p style="color: #64748b; font-size: 0.9rem;">
                 &copy; 2026 Manual de Operações Gerenciais | Casa Goianita<br>
                 Desenvolvido por <strong>Cléber Donato</strong> - Estrategista Live Consultoria V6.0
             </p>
@@ -921,20 +680,11 @@
         lucide.createIcons();
 
         function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-trigger').forEach(trigger => {
-                trigger.classList.remove('active');
-            });
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-trigger').forEach(t => t.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
             window.scrollTo(0, 0);
-        }
-
-        function toggleProcedure() {
-            const box = document.getElementById('procedure-box');
-            box.style.display = box.style.display === 'block' ? 'none' : 'block';
         }
     </script>
 </body>
