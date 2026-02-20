@@ -38,9 +38,9 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* HEADER DOURADO */
+        /* HEADER */
         header {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -48,6 +48,7 @@
             text-align: center;
             background: radial-gradient(circle at center, var(--live-accent-dim) 0%, transparent 70%);
             position: relative;
+            padding: 100px 20px;
         }
 
         h1 {
@@ -96,13 +97,13 @@
         .nav-dots a:hover { background: var(--live-accent); transform: scale(1.3); }
 
         /* SEÇÕES */
-        section { padding: 120px 0; border-bottom: 1px solid var(--border-subtle); }
-        h2 { font-size: 42px; color: var(--text-light); margin-bottom: 30px; display: flex; align-items: center; gap: 20px; }
+        section { padding: 100px 0; border-bottom: 1px solid var(--border-subtle); }
+        h2 { font-size: clamp(28px, 4vw, 42px); color: var(--text-light); margin-bottom: 30px; display: flex; align-items: center; gap: 20px; }
         h2 i { color: var(--live-accent); font-size: 0.8em; }
 
         .module-intro {
             font-family: 'Merriweather', serif;
-            font-size: 22px;
+            font-size: clamp(18px, 2vw, 22px);
             color: #cbd5e0;
             margin-bottom: 50px;
             border-left: 5px solid var(--live-accent);
@@ -115,7 +116,7 @@
             background: var(--live-glass);
             border: 1px solid var(--border-subtle);
             border-radius: 24px;
-            padding: 50px;
+            padding: clamp(25px, 5vw, 50px);
             margin-bottom: 40px;
             transition: all 0.4s ease;
             position: relative;
@@ -125,18 +126,20 @@
         .tech-card:hover { border-color: var(--live-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
 
         .step-title {
-            font-size: 28px;
+            font-size: clamp(20px, 3vw, 28px);
             color: var(--live-accent);
             margin-bottom: 20px;
             font-weight: 600;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .instruction-block {
             background: rgba(0,0,0,0.25);
-            padding: 30px;
+            padding: clamp(20px, 3vw, 30px);
             border-radius: 16px;
             margin-top: 25px;
             border-left: 3px solid var(--live-accent-dim);
@@ -165,16 +168,18 @@
 
         .why-tag {
             display: inline-block;
-            background: rgba(255,255,255,0.05);
-            padding: 4px 12px;
-            border-radius: 6px;
+            background: rgba(0, 232, 0, 0.1);
+            padding: 4px 14px;
+            border-radius: 30px;
             font-size: 13px;
             color: var(--live-accent);
-            margin-bottom: 10px;
-            font-weight: 600;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid var(--live-accent-dim);
         }
 
-        /* MEDIA & IMAGENS */
+        /* IMAGENS */
         .img-box {
             width: 100%;
             border-radius: 20px;
@@ -182,11 +187,11 @@
             margin-bottom: 35px;
             border: 1px solid var(--border-subtle);
             box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            background: #04111d;
         }
-        .img-box img { width: 100%; display: block; object-fit: cover; height: 450px; transition: 0.5s; }
+        .img-box img { width: 100%; display: block; object-fit: cover; height: clamp(250px, 40vh, 450px); transition: 0.5s; }
         .img-box:hover img { transform: scale(1.03); }
 
-        /* GRID SISTEMA */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
         /* FOOTER */
@@ -195,7 +200,7 @@
 
         @media (max-width: 900px) {
             .grid-2 { grid-template-columns: 1fr; }
-            h1 { font-size: 55px; }
+            h1 { font-size: 45px; }
             .tech-card { padding: 30px; }
             .nav-dots { display: none; }
         }
@@ -207,24 +212,31 @@
         <a href="#intro" title="O Maestro"></a>
         <a href="#diario" title="Rotina Diária"></a>
         <a href="#semanal" title="Rotina Semanal"></a>
-        <a href="#mensal" title="Rotina Mensal"></a>
-        <a href="#rh" title="Administração de Pessoal"></a>
-        <a href="#mercado" title="Inteligência de Mercado"></a>
-        <a href="#logistica" title="Operações Logísticas"></a>
-        <a href="#financeiro" title="Gestão Financeira"></a>
-        <a href="#conflitos" title="Gestão de Conflitos"></a>
+        <a href="#rh" title="Pessoal e RH"></a>
+        <a href="#mercado" title="Inteligência"></a>
+        <a href="#logistica" title="Stock"></a>
+        <a href="#financeiro" title="Financeiro"></a>
+        <a href="#conflitos" title="Diplomata"></a>
     </nav>
 
     <header id="intro">
         <div class="container">
             <span class="badge">Live Consultoria V6.0</span>
             <h1>O MAESTRO DA LOJA</h1>
-            <p class="subtitle" style="font-size: 26px; color: #a0aec0; max-width: 800px;">Transformando a operação gerencial em uma sinfonia de lucros e processos impecáveis.</p>
+            <p class="subtitle" style="font-size: 26px; color: #a0aec0; max-width: 850px;">A fundação de um negócio sólido reside na disciplina tática do seu gestor.</p>
+            
             <div class="img-box" style="max-width: 900px; margin-top: 50px;">
-                <img src="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&q=80&w=1200" alt="">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1200&auto=format&fit=crop" 
+                     alt="[Image of Estratégia de Negócios]" 
+                     onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Estrategia+Varejo'">
             </div>
-            <a href="#diario" style="margin-top: 30px; display: inline-block; color: var(--live-accent); text-decoration: none; font-weight: 600; letter-spacing: 2px;">
-                EXPLORAR MANUAL <i class="fa-solid fa-chevron-down"></i>
+            
+            <p style="font-family: 'Merriweather', serif; font-size: 18px; margin-top: 30px; max-width: 700px;">
+                "Pense nestas atribuições como a fundação de uma casa: o cliente não vê a fundação, mas sem ela, as paredes — as vendas e o atendimento — desmoronam."
+            </p>
+            
+            <a href="#diario" style="margin-top: 30px; display: inline-block; color: var(--live-accent); text-decoration: none; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">
+                Iniciar Treinamento <i class="fa-solid fa-chevron-down"></i>
             </a>
         </div>
     </header>
@@ -233,32 +245,37 @@
         
         <!-- MÓDULO 1: DIÁRIO -->
         <section id="diario">
-            <h2><i class="fa-solid fa-sun"></i> Módulo 1: O Compasso Diário</h2>
-            <p class="module-intro">"O dia a dia do gerente é o ensaio geral. Sem afinação rigorosa antes da abertura, o concerto será um desastre."</p>
+            <h2><i class="fa-solid fa-clock"></i> Módulo 1: O Compasso Diário</h2>
+            <p class="module-intro">"O maestro não toca os instrumentos, ele garante que a sinfonia aconteça no tempo certo."</p>
 
             <div class="tech-card">
                 <div class="step-title"><span>1. Abertura e Inspeção 5S</span><small>08:00 - 08:30</small></div>
-                <div class="why-tag">FUNDAÇÃO: Experiência do Cliente</div>
-                <p>O gerente deve chegar 30 minutos antes para garantir a "Visão de Fora para Dentro". Se você entra pela porta dos fundos e não vê o que o cliente vê, você falhou antes de começar.</p>
+                <div class="why-tag">FUNDAÇÃO: Padrão de Excelência</div>
+                <p>O gerente deve chegar 30 minutos antes para garantir a "Visão do Cliente". Se você não observa a loja de fora antes de abrir, você é apenas mais um funcionário, não o gestor.</p>
                 <div class="instruction-block">
-                    <h4>Passo a Passo de Execução:</h4>
+                    <h4>Protocolo de Abertura:</h4>
                     <ul class="check-list">
-                        <li><strong>Vitrinas e Fachada:</strong> Limpe as dedadas nos vidros. Garanta que a iluminação está focada nos itens corretos. Se houver pó na montra, o produto perde 50% do seu valor percebido.</li>
-                        <li><strong>Sensos de Ordenação (Seiton):</strong> Nada de casacos de funcionários no balcão ou chávenas de café espalhadas. O balcão é uma ferramenta de venda, não um depósito pessoal.</li>
-                        <li><strong>Check de TI:</strong> Verifique se todos os terminais e sistemas de caixa estão prontos. Não espere a fila formar para descobrir um erro de rede.</li>
+                        <li><strong>Visão Externa:</strong> Pare na frente da vitrina. Verifique se os vidros estão impecáveis e se a iluminação valoriza os produtos.</li>
+                        <li><strong>Sensos de Ordenação:</strong> Certifique-se de que lixeiras foram retiradas, balcões estão limpos e não há objetos pessoais obstruindo a visão do cliente.</li>
+                        <li><strong>Check de TI e Infra:</strong> Teste terminais e sistemas. Garanta que a equipa não perca vendas por falhas técnicas evitáveis.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="tech-card">
                 <div class="step-title"><span>2. Briefing Matinal</span><small>08:30 - 08:45</small></div>
-                <p>O briefing não é um momento para "dar bom dia", é um alinhamento tático de guerra. É onde o maestro distribui as partituras do dia.</p>
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop" 
+                         alt="[Image of Reunião de Equipa]"
+                         onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Briefing+Matinal'">
+                </div>
+                <p>O briefing é o momento sagrado de alinhamento. Não é para "dar avisos", é para definir a estratégia de vitória do dia.</p>
                 <div class="instruction-block">
-                    <h4>Roteiro de Execução:</h4>
+                    <h4>Pauta Obrigatória:</h4>
                     <ul class="check-list">
-                        <li><strong>Produtos do Dia:</strong> Apresente os itens de foco **definidos pela gestão**. Demonstre o produto, fale sobre a margem e a necessidade que ele resolve.</li>
-                        <li><strong>Metas Individuais:</strong> Não fale apenas o valor global. Diga a cada vendedor quantos clientes ele precisa converter para chegar ao seu objetivo pessoal.</li>
-                        <li><strong>Motivação Ativa:</strong> Use exemplos de vitórias do dia anterior para elevar o moral.</li>
+                        <li><strong>Produtos Foco:</strong> Repasse os itens definidos pela gestão. Explique o "porquê" de vendê-los hoje.</li>
+                        <li><strong>Metas do Dia:</strong> Distribua o objetivo global por cada vendedor de forma clara e motivadora.</li>
+                        <li><strong>Regra do Palco:</strong> Relembre a equipa que, diante do cliente, todos estão num palco e devem agir com excelência absoluta.</li>
                     </ul>
                 </div>
             </div>
@@ -267,21 +284,22 @@
         <!-- MÓDULO 2: SEMANAL -->
         <section id="semanal">
             <h2><i class="fa-solid fa-calendar-check"></i> Módulo 2: O Ajuste das Velas</h2>
-            <p class="module-intro">"Remar é diário, mas olhar para a bússola é o que impede o barco de andar em círculos."</p>
-
+            
             <div class="tech-card">
-                <div class="step-title"><span>Visual Merchandising & Vitrina</span></div>
+                <div class="step-title"><span>Visual Merchandising de Utilidades</span></div>
                 <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1603192708354-9988899846c4?auto=format&fit=crop&q=80&w=1200" alt="">
+                    <img src="https://images.unsplash.com/photo-1516594798947-e65505dbb29d?q=80&w=1200&auto=format&fit=crop" 
+                         alt=""
+                         onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Vitrina+Utilidades'">
                 </div>
-                <div class="why-tag">FUNDAÇÃO: Renovação de Desejo</div>
-                <p>A vitrina da Casa Goianita deve contar uma história. Uma vitrina parada há 15 dias é paisagem. O cliente deixa de a ver.</p>
+                <div class="why-tag">FUNDAÇÃO: Renovação do Desejo</div>
+                <p>A vitrina da Casa Goianita é o convite. No varejo de utilidades, a composição visual vende o estilo de vida, não apenas o objeto.</p>
                 <div class="instruction-block">
-                    <h4>Como Executar:</h4>
+                    <h4>Instruções de VM:</h4>
                     <ul class="check-list">
-                        <li><strong>Troca de Cenário:</strong> Toda a segunda-feira, mude o tema da vitrina (Ex: Semana do Café, Mesa de Almoço de Domingo, Festival das Taças).</li>
-                        <li><strong>Hierarquia de Alturas:</strong> Use suportes para criar profundidade. Nunca alinhe tudo na mesma altura; isso mata o dinamismo visual.</li>
-                        <li><strong>Iluminação Estratégica:</strong> À noite, passe em frente à loja e verifique se as luzes estão a criar sombras indesejadas nos produtos.</li>
+                        <li><strong>Troca Semanal:</strong> Altere os cenários da vitrina toda a segunda-feira. Uma montra parada vira "paisagem" e o cliente deixa de notar.</li>
+                        <li><strong>Cross-Merchandising:</strong> Monte mesas de composição. Se vender uma panela, a tábua e os utensílios devem estar ao lado.</li>
+                        <li><strong>Hierarquia Visual:</strong> Use diferentes alturas. O olhar do cliente deve viajar pela exposição, não encontrar uma linha plana.</li>
                     </ul>
                 </div>
             </div>
@@ -289,82 +307,70 @@
 
         <!-- MÓDULO 5: RH -->
         <section id="rh">
-            <h2><i class="fa-solid fa-users"></i> Módulo 5: Administração de Pessoal e RH</h2>
-            <p class="module-intro">"O gerente é o guardião da cultura. Se o filtro da entrada falha, o lixo entra e estraga toda a operação."</p>
+            <h2><i class="fa-solid fa-users-gear"></i> Módulo 5: Administração de Pessoal e RH</h2>
+            <p class="module-intro">"O gerente é o guardião da porta. Se o filtro da entrada falha, toda a engrenagem humana adoece."</p>
 
             <div class="tech-card">
-                <div class="step-title"><span>Recrutamento e Integração</span></div>
-                <div class="why-tag">FUNDAÇÃO: Qualidade do Capital Humano</div>
-                <p>Contratar mal custa caro: gera processos trabalhistas, má reputação e stress na equipa. O gerente é o primeiro filtro.</p>
+                <div class="step-title"><span>Recrutamento e Onboarding</span></div>
+                <div class="why-tag">FUNDAÇÃO: Manutenção da Cultura</div>
+                <p>Contratar por desespero é o maior erro de um gestor. O gerente deve ser o primeiro e mais rigoroso filtro da empresa.</p>
                 <div class="instruction-block">
-                    <h4>Ações Obrigatórias:</h4>
+                    <h4>Como Executar:</h4>
                     <ul class="check-list">
-                        <li><strong>O Filtro da Porta:</strong> Realize entrevistas por competências. Use o **Modelo STAR** (peça para o candidato contar uma Situação, a Tarefa dele, a Ação que tomou e o Resultado obtido).</li>
-                        <li><strong>Checagem de Referências:</strong> **Obrigatório.** Ligue para os últimos dois empregadores. Pergunte: "Você contrataria essa pessoa novamente?". O silêncio do outro lado diz tudo.</li>
-                        <li><strong>Onboarding (Acolhimento):</strong> Não jogue o novato na loja. No primeiro dia, apresente a história de 73 anos da Casa Goianita e coloque-o ao lado do seu melhor vendedor por 48h apenas observando.</li>
+                        <li><strong>Checagem de Referências:</strong> **Obrigatório.** Nunca contrate sem ligar para os últimos empregadores. Uma ligação de 3 minutos revela mais do que 1 hora de entrevista.</li>
+                        <li><strong>Modelo por Competências:</strong> Procure por atitude e valores. A técnica nós ensinamos; o carácter já deve vir de casa.</li>
+                        <li><strong>Acolhimento (Onboarding):</strong> Acompanhe o novato passo a passo. Garanta que ele compreenda os 73 anos de história da marca antes de abordar o primeiro cliente.</li>
                     </ul>
                 </div>
             </div>
-
+            
             <div class="tech-card">
-                <div class="step-title"><span>Gestão Trabalhista e Disciplina</span></div>
+                <div class="step-title"><span>Gestão Trabalhista</span></div>
+                <p>O rigor administrativo evita passivos jurídicos e garante a harmonia entre os colaboradores.</p>
                 <div class="instruction-block">
-                    <h4>Como Executar o Controle:</h4>
                     <ul class="check-list">
-                        <li><strong>Rigor no Ponto:</strong> Fiscalize diariamente as batidas de ponto. Não aceite "esqueci de bater".</li>
-                        <li><strong>Escalas Estratégicas:</strong> Monte a escala do mês seguinte com 15 dias de antecedência. Garanta que nos horários de pico (11h às 14h) a equipa esteja completa.</li>
-                        <li><strong>Advertência Educativa:</strong> Viu um erro? Documente. O feedback deve ser feito em 3 frases: O Evento (o que aconteceu), O Impacto (o que causou na loja) e A Expectativa (como deve ser na próxima vez).</li>
+                        <li><strong>Controlo de Ponto:</strong> Fiscalize diariamente as batidas. Não aceite negligência com o horário de trabalho.</li>
+                        <li><strong>Escalas e Férias:</strong> Planeie com antecedência. A loja nunca pode ser prejudicada por falta de pessoal em dias de pico.</li>
+                        <li><strong>Disciplina Educativa:</strong> Documente todas as ações corretivas. Advertência não é castigo, é instrução sobre o padrão inegociável da empresa.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- MÓDULO 6: ESTRATEGISTA -->
+        <!-- MÓDULO 6: MERCADO -->
         <section id="mercado">
-            <h2><i class="fa-solid fa-chess"></i> Módulo 6: Inteligência de Mercado</h2>
-            <p class="module-intro">"Um gerente que só olha para dentro da própria loja é um gerente cego."</p>
+            <h2><i class="fa-solid fa-chess-knight"></i> Módulo 6: Inteligência de Mercado</h2>
+            <p class="module-intro">"Um gerente que não olha para a concorrência está a jogar xadrez de olhos vendados."</p>
 
             <div class="tech-card">
-                <div class="step-title"><span>Monitoramento da Concorrência</span></div>
-                <div class="why-tag">FUNDAÇÃO: Posicionamento Competitivo</div>
-                <p>O seu cliente pesquisa no Instagram e na concorrência vizinha. Você precisa de estar um passo à frente.</p>
+                <div class="step-title"><span>Monitoramento Estratégico</span></div>
+                <div class="why-tag">FUNDAÇÃO: Vantagem Competitiva</div>
                 <div class="instruction-block">
-                    <h4>Rotina de Inteligência:</h4>
+                    <h4>Rotina do Estrategista:</h4>
                     <ul class="check-list">
-                        <li><strong>Visita Oculta:</strong> Uma vez por mês, entre na loja concorrente como cliente. Observe o atendimento, o cheiro da loja e como eles expõem os produtos que nós também temos.</li>
-                        <li><strong>Comparativo de Preços:</strong> Se um cliente disser "lá está mais barato", você precisa de saber se é verdade. Mantenha uma lista de preços dos itens "Top 10" dos vizinhos sempre atualizada.</li>
-                        <li><strong>Sugestões à Diretoria:</strong> Identificou um produto que está a "bombar" lá fora e nós não temos? Reporte imediatamente com fotos e preços.</li>
+                        <li><strong>Mapeamento:</strong> Saiba quem são os seus vizinhos e por que o seu cliente compra lá. Conheça os pontos fortes e fracos deles.</li>
+                        <li><strong>Comparação de Preços:</strong> Pesquise mensalmente. Avalie sortimento, promoções e a qualidade do serviço prestado pela concorrência.</li>
+                        <li><strong>Planeamento de Promoções:</strong> Antes de sugerir uma ação, verifique o stock. Proponha soluções à diretoria com base em dados, não em palpites.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- MÓDULO 7: LOGÍSTICA -->
+        <!-- MÓDULO 7: ESTOQUE -->
         <section id="logistica">
-            <h2><i class="fa-solid fa-boxes-stacked"></i> Módulo 7: Operações Logísticas e Estoque</h2>
-            <p class="module-intro">"O stock é dinheiro empilhado. Se você não cuida dele, está a deixar notas de 100 reais apodrecerem na prateleira."</p>
+            <h2><i class="fa-solid fa-boxes-stacked"></i> Módulo 7: Operações Logísticas e Stock</h2>
+            <p class="module-intro">"O stock é dinheiro a dormir. O gerente deve zelar por ele como se fosse a sua própria conta bancária."</p>
 
             <div class="tech-card">
                 <div class="step-title"><span>Recebimento Impecável</span></div>
                 <div class="why-tag">FUNDAÇÃO: Integridade Financeira</div>
-                <p>O lucro começa na compra e na conferência. O gerente deve ser o "porteiro" final da qualidade.</p>
+                <p>O lucro da venda começa na conferência da compra. O gerente deve garantir que o que foi pago é o que foi entregue.</p>
                 <div class="instruction-block">
-                    <h4>Protocolo de Conferência:</h4>
+                    <h4>Protocolo de Recebimento:</h4>
                     <ul class="check-list">
-                        <li><strong>Conferência Cega:</strong> Não confira olhando para a nota. Conte os volumes primeiro e depois cruze com a NFe.</li>
-                        <li><strong>Tratativa de Erros:</strong> Se houver quebra ou falta, anote no corpo da Nota Fiscal **na hora**. Tire fotos e envie para o financeiro e para o DPA (Compras). Sem prova documental, a loja assume o prejuízo.</li>
-                        <li><strong>Giro Inteligente:</strong> O produto chegou? Vá para a área de vendas em 2 horas. Produto parado no depósito não paga salários.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tech-card">
-                <div class="step-title"><span>Prevenção e Auditoria</span></div>
-                <div class="instruction-block">
-                    <h4>Como Executar:</h4>
-                    <ul class="check-list">
-                        <li><strong>Contagens Relâmpago:</strong> Escolha 5 produtos aleatórios por dia e peça ao estoquista para contar. Se não bater com o sistema, investigue a causa raiz imediatamente.</li>
-                        <li><strong>Zelo pelo Velho:</strong> Peça à equipa para oferecer o stock antigo antes da novidade. O lucro real está no que já foi pago e está a ocupar espaço.</li>
+                        <li><strong>Conferência Física:</strong> Verifique quantidade e estado das embalagens comparando-as com a Nota Fiscal (NFe).</li>
+                        <li><strong>Gestão de Divergências:</strong> Se houver falta ou quebra, anote no corpo da NFe na hora e comunique o DPA (Compras) e o financeiro imediatamente.</li>
+                        <li><strong>Exposição Imediata:</strong> Produto no depósito não gera lucro. Após conferir, leve as novidades para a área de vendas em tempo recorde.</li>
                     </ul>
                 </div>
             </div>
@@ -373,43 +379,45 @@
         <!-- MÓDULO 8: FINANCEIRO -->
         <section id="financeiro">
             <h2><i class="fa-solid fa-file-invoice-dollar"></i> Módulo 8: Gestão Financeira e Burocrática</h2>
-            <p class="module-intro">"O gerente que não domina os seus números não gere um negócio, gere um passatempo."</p>
+            <p class="module-intro">"Gestão é medição. O que não se mede, não se gere."</p>
 
             <div class="tech-card">
-                <div class="step-title"><span>Controle de Caixa e Despesas</span></div>
+                <div class="step-title"><span>Controle de Caixa e Notas</span></div>
                 <div class="why-tag">FUNDAÇÃO: Saúde do Fluxo de Caixa</div>
                 <div class="instruction-block">
                     <h4>Regras de Ouro:</h4>
                     <ul class="check-list">
-                        <li><strong>Fecho Diário:</strong> O caixa deve ser conferido pelo gerente pessoalmente todos os dias. Diferenças de 1 real devem ser justificadas.</li>
-                        <li><strong>Notas para o Financeiro:</strong> **Obrigatório.** Envie todas as notas fiscais recebidas para o financeiro no mesmo dia. Notas guardadas na gaveta atrasam pagamentos e geram multas.</li>
-                        <li><strong>Recibos Formais:</strong> Proibido vales em "papel de pão". Toda a despesa da loja deve ter comprovante fiscal ou recibo assinado com CPF/CNPJ.</li>
+                        <li><strong>Fechamento Diário:</strong> Fiscalize e confira o caixa pessoalmente todos os dias. Reporte discrepâncias ao supervisor imediatamente.</li>
+                        <li><strong>Fluxo de Notas:</strong> Envie todas as notas fiscais recebidas para o financeiro no mesmo dia. Não acumule papéis na gerência.</li>
+                        <li><strong>Controle de Despesas:</strong> Elimine gastos desnecessários. Toda a despesa deve ter recibo formal com identificação (CPF/CNPJ).</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- MÓDULO 9: DIPLOMATA -->
+        <!-- MÓDULO 9: CONFLITOS -->
         <section id="conflitos" style="border-bottom: none;">
             <h2><i class="fa-solid fa-handshake-angle"></i> Módulo 9: Gestão de Conflitos e Relacionamento</h2>
-            <p class="module-intro">"No varejo, o problema não é o erro, mas a forma como você o resolve. O gerente é o diplomata da marca."</p>
+            <p class="module-intro">"No varejo de luxo e utilidades, a reputação é o ativo mais caro. O gerente é o diplomata da marca."</p>
 
             <div class="tech-card">
-                <div class="step-title"><span>A Troca como Oportunidade</span></div>
-                <div class="why-tag">FUNDAÇÃO: Fidelização e LTV</div>
-                <p>Muitos vendedores odeiam trocas porque "não ganham comissão". O gerente deve mudar esse paradigma.</p>
+                <div class="step-title"><span>Tratativa de Reclamações</span></div>
+                <div class="why-tag">FUNDAÇÃO: Fidelização (LTV)</div>
+                <p>O cliente insatisfeito é uma oportunidade de marketing disfarçada de problema. A forma como você resolve define se ele volta.</p>
                 <div class="instruction-block">
-                    <h4>Como Agir:</h4>
+                    <h4>Ações do Diplomata:</h4>
                     <ul class="check-list">
-                        <li><strong>Assuma o Comando:</strong> Reclamações críticas devem ser atendidas pelo gerente. O cliente quer sentir que a "autoridade máxima" o está a ouvir.</li>
-                        <li><strong>A Regra do 1+1:</strong> Ensine a equipa que uma troca é a chance de vender um complemento. O cliente já está na loja com um crédito; ofereça algo que agregue valor ao produto trocado.</li>
-                        <li><strong>Escuta Ativa:</strong> Deixe o cliente falar tudo sem interromper. No final, diga: "Compreendo a sua frustração e estou aqui para resolver agora".</li>
+                        <li><strong>Assuma a Frente:</strong> Reclamações críticas devem ser resolvidas pelo gerente. O cliente precisa sentir a autoridade da solução.</li>
+                        <li><strong>Troca como Oportunidade:</strong> Ensine a equipa a não ver a troca como um "problema", mas como chance de realizar vendas adicionais.</li>
+                        <li><strong>Domínio Político:</strong> Tenha pleno domínio da política de trocas da empresa. Seja justo, mas firme nos padrões da Casa Goianita.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="tech-card" style="margin-top: 40px; text-align: center; background: var(--live-accent-dim);">
-                <h3 style="font-family: 'Merriweather', serif; font-style: italic; color: var(--live-accent); font-size: 26px;">"O Sucesso da Casa Goianita não é sorte. É a execução implacável destes processos, todos os dias, por todos os maestros."</h3>
+                <h3 style="font-family: 'Merriweather', serif; font-style: italic; color: var(--live-accent); font-size: clamp(20px, 3vw, 26px);">
+                    "Ao dominar estas ferramentas, você deixa de ser um 'chefe de vendas' e torna-se um verdadeiro Gestor de Negócios."
+                </h3>
             </div>
         </section>
 
