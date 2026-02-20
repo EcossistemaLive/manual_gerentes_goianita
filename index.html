@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manual do Maestro - Operação de Alta Performance V6.0</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
         :root {
             --live-deep: #06192a;
@@ -24,8 +27,15 @@
             --border-subtle: rgba(255, 255, 255, 0.1);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             background-color: var(--live-deep);
@@ -36,7 +46,11 @@
             background-attachment: fixed;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px;
+        }
 
         /* HEADER */
         header {
@@ -94,12 +108,30 @@
             transition: 0.3s ease;
         }
 
-        .nav-dots a:hover { background: var(--live-accent); transform: scale(1.3); }
+        .nav-dots a:hover {
+            background: var(--live-accent);
+            transform: scale(1.3);
+        }
 
         /* SEÇÕES */
-        section { padding: 100px 0; border-bottom: 1px solid var(--border-subtle); }
-        h2 { font-size: clamp(28px, 4vw, 42px); color: var(--text-light); margin-bottom: 30px; display: flex; align-items: center; gap: 20px; }
-        h2 i { color: var(--live-accent); font-size: 0.8em; }
+        section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            color: var(--text-light);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h2 i {
+            color: var(--live-accent);
+            font-size: 0.8em;
+        }
 
         .module-intro {
             font-family: 'Merriweather', serif;
@@ -123,7 +155,10 @@
             overflow: hidden;
         }
 
-        .tech-card:hover { border-color: var(--live-accent); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .tech-card:hover {
+            border-color: var(--live-accent);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
 
         .step-title {
             font-size: clamp(20px, 3vw, 28px);
@@ -138,23 +173,33 @@
         }
 
         .instruction-block {
-            background: rgba(0,0,0,0.25);
+            background: rgba(0, 0, 0, 0.25);
             padding: clamp(20px, 3vw, 30px);
             border-radius: 16px;
             margin-top: 25px;
             border-left: 3px solid var(--live-accent-dim);
         }
 
-        .instruction-block h4 { color: #a2ffae; font-size: 16px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .instruction-block h4 {
+            color: #a2ffae;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
         /* LISTAS TÉCNICAS */
-        ul.check-list { list-style: none; }
+        ul.check-list {
+            list-style: none;
+        }
+
         ul.check-list li {
             position: relative;
             padding-left: 40px;
             margin-bottom: 18px;
             font-size: 17px;
         }
+
         ul.check-list li::before {
             content: '\f058';
             font-family: 'Font Awesome 6 Free';
@@ -186,26 +231,51 @@
             overflow: hidden;
             margin-bottom: 35px;
             border: 1px solid var(--border-subtle);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
             background: #04111d;
         }
-        .img-box img { width: 100%; display: block; object-fit: cover; height: clamp(250px, 40vh, 450px); transition: 0.5s; }
-        .img-box:hover img { transform: scale(1.03); }
 
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .img-box img {
+            width: 100%;
+            display: block;
+            object-fit: cover;
+            height: clamp(250px, 40vh, 450px);
+            transition: 0.5s;
+        }
+
+        .img-box:hover img {
+            transform: scale(1.03);
+        }
 
         /* FOOTER */
-        footer { padding: 100px 0; text-align: center; background: #030d16; border-top: 1px solid var(--border-subtle); }
-        .footer-logo { height: 60px; margin-bottom: 25px; }
+        footer {
+            padding: 100px 0;
+            text-align: center;
+            background: #030d16;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 25px;
+        }
 
         @media (max-width: 900px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            h1 { font-size: 45px; }
-            .tech-card { padding: 30px; }
-            .nav-dots { display: none; }
+            h1 {
+                font-size: 45px;
+            }
+
+            .tech-card {
+                padding: 30px;
+            }
+
+            .nav-dots {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <nav class="nav-dots">
@@ -225,35 +295,42 @@
         <div class="container">
             <span class="badge">Live Consultoria V6.0</span>
             <h1>O MAESTRO DA LOJA</h1>
-            <p class="subtitle" style="font-size: 26px; color: #a0aec0; max-width: 850px;">A fundação de um negócio sólido reside na disciplina tática do seu gestor.</p>
-            
+            <p class="subtitle" style="font-size: 26px; color: #a0aec0; max-width: 850px;">A fundação de um negócio
+                sólido reside na disciplina tática do seu gestor.</p>
+
             <div class="img-box" style="max-width: 900px; margin-top: 50px;">
-                <img src="https://images.unsplash.com/photo-1454165833767-027ffea9e77b?q=80&w=1200&auto=format&fit=crop" 
-                     alt="[Image of Estratégia de Negócios]" 
-                     onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Estrategia+Varejo'">
+                <!-- Updated Image for Store Manager Context -->
+                <img src="https://images.unsplash.com/photo-1556740734-7f9a2b77d5ec?q=80&w=1200&auto=format&fit=crop"
+                    alt="[Estratégia de Negócios Varejo]"
+                    onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Estrategia+Varejo'">
             </div>
-            
+
             <p style="font-family: 'Merriweather', serif; font-size: 18px; margin-top: 30px; max-width: 700px;">
-                "Pense nestas atribuições como a fundação de uma casa: o cliente não vê a fundação, mas sem ela, as paredes — as vendas e o atendimento — desmoronam."
+                "Pense nestas atribuições como a fundação de uma casa: o cliente não vê a fundação, mas sem ela, as
+                paredes — as vendas e o atendimento — desmoronam."
             </p>
         </div>
     </header>
 
     <div class="container">
-        
+
         <!-- MÓDULO 1: DIÁRIO -->
         <section id="modulo1">
             <h2><i class="fa-solid fa-clock"></i> Módulo 1: O Compasso Diário</h2>
-            <p class="module-intro">"O dia a dia é o ensaio geral. Sem afinação rigorosa antes da abertura, o concerto será um desastre."</p>
+            <p class="module-intro">"O dia a dia é o ensaio geral. Sem afinação rigorosa antes da abertura, o concerto
+                será um desastre."</p>
 
             <div class="tech-card">
                 <div class="step-title"><span>1. Abertura e Inspeção 5S</span><small>08:00 - 08:30</small></div>
                 <div class="why-tag">FUNDAÇÃO: Padrão de Excelência</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Visão Externa:</strong> Observe a vitrina com os olhos do cliente. Vidros limpos e luzes focadas valorizam o produto em 50%.</li>
-                        <li><strong>Sensos de Ordenação:</strong> Balcão limpo, sem casacos ou chávenas de café. O balcão é ferramenta de venda.</li>
-                        <li><strong>Check de Infraestrutura:</strong> Teste terminais e sistemas. Não espere a fila formar para descobrir um erro técnico.</li>
+                        <li><strong>Visão Externa:</strong> Observe a vitrina com os olhos do cliente. Vidros limpos e
+                            luzes focadas valorizam o produto em 50%.</li>
+                        <li><strong>Sensos de Ordenação:</strong> Balcão limpo, sem casacos ou chávenas de café. O
+                            balcão é ferramenta de venda.</li>
+                        <li><strong>Check de Infraestrutura:</strong> Teste terminais e sistemas. Não espere a fila
+                            formar para descobrir um erro técnico.</li>
                     </ul>
                 </div>
             </div>
@@ -264,7 +341,8 @@
                 <div class="instruction-block">
                     <ul class="check-list">
                         <li><strong>Produtos Foco:</strong> Repasse os itens de foco **definidos pela gestão**.</li>
-                        <li><strong>Metas do Dia:</strong> Distribua o objetivo global por cada vendedor de forma clara.</li>
+                        <li><strong>Metas do Dia:</strong> Distribua o objetivo global por cada vendedor de forma clara.
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -276,16 +354,20 @@
             <div class="tech-card">
                 <div class="step-title"><span>Visual Merchandising & Vitrina</span></div>
                 <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1584990333910-efed3a05b38d?q=80&w=1200&auto=format&fit=crop" 
-                         alt=""
-                         onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Prateleira+de+Panelas'">
+                    <!-- Updated Image for High-end Retail Visual Merchandising -->
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop"
+                        alt="Visual Merchandising Premium"
+                        onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Prateleira+de+Panelas'">
                 </div>
                 <div class="why-tag">FUNDAÇÃO: Renovação do Desejo</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Troca Semanal:</strong> Altere os cenários toda a segunda-feira. Uma vitrina parada vira paisagem.</li>
-                        <li><strong>Cross-Merchandising:</strong> Ao expor panelas, coloque tábuas e utensílios ao lado para aumentar o ticket.</li>
-                        <li><strong>Hierarquia Visual:</strong> Use diferentes alturas para guiar o olhar do cliente.</li>
+                        <li><strong>Troca Semanal:</strong> Altere os cenários toda a segunda-feira. Uma vitrina parada
+                            vira paisagem.</li>
+                        <li><strong>Cross-Merchandising:</strong> Ao expor panelas, coloque tábuas e utensílios ao lado
+                            para aumentar o ticket.</li>
+                        <li><strong>Hierarquia Visual:</strong> Use diferentes alturas para guiar o olhar do cliente.
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -294,16 +376,20 @@
         <!-- MÓDULO 3: MENSAL -->
         <section id="modulo3">
             <h2><i class="fa-solid fa-chart-line"></i> Módulo 3: A Colheita e o Plantio</h2>
-            <p class="module-intro">"O fechamento exige precisão analítica para garantir que o físico bata com o financeiro."</p>
+            <p class="module-intro">"O fechamento exige precisão analítica para garantir que o físico bata com o
+                financeiro."</p>
 
             <div class="tech-card">
                 <div class="step-title"><span>Inventário e Resultados</span></div>
                 <div class="why-tag">FUNDAÇÃO: Acuracidade Financeira</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Contagem Rotativa:</strong> Coordene a contagem por categorias para evitar furos de estoque.</li>
-                        <li><strong>Regra PEPS:</strong> Garanta que o estoque antigo saia primeiro (Primeiro que Entra, Primeiro que Sai).</li>
-                        <li><strong>Relatórios à Diretoria:</strong> Elabore análises de desempenho vs metas (Mínima, Básica e Master).</li>
+                        <li><strong>Contagem Rotativa:</strong> Coordene a contagem por categorias para evitar furos de
+                            estoque.</li>
+                        <li><strong>Regra PEPS:</strong> Garanta que o estoque antigo saia primeiro (Primeiro que Entra,
+                            Primeiro que Sai).</li>
+                        <li><strong>Relatórios à Diretoria:</strong> Elabore análises de desempenho vs metas (Mínima,
+                            Básica e Master).</li>
                     </ul>
                 </div>
             </div>
@@ -317,9 +403,12 @@
                 <div class="why-tag">FUNDAÇÃO: Autoridade e Cultura</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Disciplina Inegociável:</strong> Normas não são sugestões. Manter as regras é o que sustenta o comando.</li>
-                        <li><strong>Seja o Exemplo:</strong> A equipa é o reflexo da rotina e da postura do seu gestor.</li>
-                        <li><strong>Inteligência Emocional:</strong> Mantenha a calma em crises; você está sempre sob observação no palco.</li>
+                        <li><strong>Disciplina Inegociável:</strong> Normas não são sugestões. Manter as regras é o que
+                            sustenta o comando.</li>
+                        <li><strong>Seja o Exemplo:</strong> A equipa é o reflexo da rotina e da postura do seu gestor.
+                        </li>
+                        <li><strong>Inteligência Emocional:</strong> Mantenha a calma em crises; você está sempre sob
+                            observação no palco.</li>
                     </ul>
                 </div>
             </div>
@@ -328,16 +417,20 @@
         <!-- MÓDULO 5: RH -->
         <section id="modulo5">
             <h2><i class="fa-solid fa-users-gear"></i> Módulo 5: Administração de Pessoal e RH</h2>
-            <p class="module-intro">"O gerente é o primeiro filtro da empresa. Se a porta falha, a engrenagem humana adoece."</p>
+            <p class="module-intro">"O gerente é o primeiro filtro da empresa. Se a porta falha, a engrenagem humana
+                adoece."</p>
 
             <div class="tech-card">
                 <div class="step-title"><span>Recrutamento e Integração</span></div>
                 <div class="why-tag">FUNDAÇÃO: Qualidade do Capital Humano</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Checagem de Referências:</strong> **Obrigatório.** Ligue para antigos empregadores. Muita informação vem em 3 minutos de chamada.</li>
-                        <li><strong>Onboarding (Acolhimento):</strong> Acompanhe o novato passo a passo. Garanta que ele absorva a técnica e a cultura da marca.</li>
-                        <li><strong>Gestão Trabalhista:</strong> Controle rigoroso de ponto, escalas e folgas para evitar passivos jurídicos.</li>
+                        <li><strong>Checagem de Referências:</strong> **Obrigatório.** Ligue para antigos empregadores.
+                            Muita informação vem em 3 minutos de chamada.</li>
+                        <li><strong>Onboarding (Acolhimento):</strong> Acompanhe o novato passo a passo. Garanta que ele
+                            absorva a técnica e a cultura da marca.</li>
+                        <li><strong>Gestão Trabalhista:</strong> Controle rigoroso de ponto, escalas e folgas para
+                            evitar passivos jurídicos.</li>
                     </ul>
                 </div>
             </div>
@@ -351,8 +444,10 @@
                 <div class="why-tag">FUNDAÇÃO: Vantagem Competitiva</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Visão de Tabuleiro:</strong> Conheça os vizinhos concorrentes. Pesquise preços, sortimento e qualidade do serviço deles mensalmente.</li>
-                        <li><strong>Planeamento de Promoções:</strong> Antes de lançar ações, verifique o nível de estoque para não frustrar o cliente.</li>
+                        <li><strong>Visão de Tabuleiro:</strong> Conheça os vizinhos concorrentes. Pesquise preços,
+                            sortimento e qualidade do serviço deles mensalmente.</li>
+                        <li><strong>Planeamento de Promoções:</strong> Antes de lançar ações, verifique o nível de
+                            estoque para não frustrar o cliente.</li>
                     </ul>
                 </div>
             </div>
@@ -366,9 +461,12 @@
                 <div class="why-tag">FUNDAÇÃO: Proteção do Ativo</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Conferência Física:</strong> O gerente deve validar quantidade e estado das embalagens comparando com a Nota Fiscal (NFe).</li>
-                        <li><strong>Tratativa de Erros:</strong> Se houver falta ou violação, anote na NFe e comunique o financeiro e compras imediatamente.</li>
-                        <li><strong>Venda Inteligente:</strong> Incentive a equipa a vender mercadorias antigas; o estoque parado é dinheiro que dorme.</li>
+                        <li><strong>Conferência Física:</strong> O gerente deve validar quantidade e estado das
+                            embalagens comparando com a Nota Fiscal (NFe).</li>
+                        <li><strong>Tratativa de Erros:</strong> Se houver falta ou violação, anote na NFe e comunique o
+                            financeiro e compras imediatamente.</li>
+                        <li><strong>Venda Inteligente:</strong> Incentive a equipa a vender mercadorias antigas; o
+                            estoque parado é dinheiro que dorme.</li>
                     </ul>
                 </div>
             </div>
@@ -382,9 +480,12 @@
                 <div class="why-tag">FUNDAÇÃO: Saúde do Fluxo de Caixa</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Fechamento Pessoal:</strong> Fiscalize o caixa diariamente. Reporte discrepâncias ao supervisor sem demora.</li>
-                        <li><strong>Envio de Notas:</strong> Envie todas as notas fiscais para o financeiro no mesmo dia do recebimento.</li>
-                        <li><strong>Rigor com Despesas:</strong> Controle gastos desnecessários e exija comprovantes fiscais ou recibos formais (CPF/CNPJ).</li>
+                        <li><strong>Fechamento Pessoal:</strong> Fiscalize o caixa diariamente. Reporte discrepâncias ao
+                            supervisor sem demora.</li>
+                        <li><strong>Envio de Notas:</strong> Envie todas as notas fiscais para o financeiro no mesmo dia
+                            do recebimento.</li>
+                        <li><strong>Rigor com Despesas:</strong> Controle gastos desnecessários e exija comprovantes
+                            fiscais ou recibos formais (CPF/CNPJ).</li>
                     </ul>
                 </div>
             </div>
@@ -398,16 +499,21 @@
                 <div class="why-tag">FUNDAÇÃO: Fidelização (LTV)</div>
                 <div class="instruction-block">
                     <ul class="check-list">
-                        <li><strong>Assuma a Frente:</strong> Reclamações críticas devem ser resolvidas pessoalmente pelo gerente. O cliente quer sentir a autoridade da solução.</li>
-                        <li><strong>Troca como Venda:</strong> Mude o paradigma: a troca é a melhor chance de vender complementos e fidelizar.</li>
-                        <li><strong>Domínio Político:</strong> Tenha pleno conhecimento da política de trocas para ser justo e firme nos padrões da empresa.</li>
+                        <li><strong>Assuma a Frente:</strong> Reclamações críticas devem ser resolvidas pessoalmente
+                            pelo gerente. O cliente quer sentir a autoridade da solução.</li>
+                        <li><strong>Troca como Venda:</strong> Mude o paradigma: a troca é a melhor chance de vender
+                            complementos e fidelizar.</li>
+                        <li><strong>Domínio Político:</strong> Tenha pleno conhecimento da política de trocas para ser
+                            justo e firme nos padrões da empresa.</li>
                     </ul>
                 </div>
             </div>
 
             <div class="tech-card" style="margin-top: 40px; text-align: center; background: var(--live-accent-dim);">
-                <h3 style="font-family: 'Merriweather', serif; font-style: italic; color: var(--live-accent); font-size: clamp(20px, 3vw, 26px);">
-                    "Dominar a operação de ponta a ponta é o que transforma o chefe de vendas num verdadeiro Gestor de Negócios."
+                <h3
+                    style="font-family: 'Merriweather', serif; font-style: italic; color: var(--live-accent); font-size: clamp(20px, 3vw, 26px);">
+                    "Dominar a operação de ponta a ponta é o que transforma o chefe de vendas num verdadeiro Gestor de
+                    Negócios."
                 </h3>
             </div>
         </section>
@@ -416,7 +522,8 @@
 
     <footer>
         <div class="container">
-            <img src="https://raw.githubusercontent.com/Clebito2/ConsultoriaLive/main/Logo%20live%20oficial-21.png" alt="Live Consultoria" class="footer-logo">
+            <img src="https://raw.githubusercontent.com/Clebito2/ConsultoriaLive/main/Logo%20live%20oficial-21.png"
+                alt="Live Consultoria" class="footer-logo">
             <p style="color: #64748b; font-size: 15px; letter-spacing: 1px;">
                 &copy; 2026 Manual de Operações Gerenciais | Casa Goianita<br>
                 Desenvolvido por <strong>Cléber Donato</strong> - Estrategista Live Consultoria V6.0
@@ -425,4 +532,5 @@
     </footer>
 
 </body>
+
 </html>
