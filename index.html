@@ -1,36 +1,53 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manual do Maestro - Operação de Alta Performance V6.0</title>
+    <title>Manual do Gestor & Cronograma de Estoque | Casa Goianita 2026</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+        /* --- LIVE DESIGN SYSTEM V6.0 --- */
         :root {
+            /* Atmosfera */
             --live-deep: #06192a;
-            --live-glass: rgba(10, 36, 61, 0.85);
-            --live-glass-hover: rgba(15, 45, 75, 0.95);
-            --glass-blur: blur(12px) saturate(180%);
+            --live-darker: #04121f;
+
+            /* Superfícies (Refractive Glass) */
+            --live-glass: rgba(10, 36, 61, 0.70);
+            --live-glass-hover: rgba(15, 45, 75, 0.85);
+            --glass-blur: blur(16px) saturate(180%);
+
+            /* Luz & Ação */
             --live-accent: #00e800;
-            --live-accent-dim: rgba(0, 232, 0, 0.1);
-            --kinetic-gradient: linear-gradient(90deg, #ffffff 0%, #a2ffae 100%);
-            --text-main: #e2e8f0;
-            --text-light: #ffffff;
-            --text-dim: #94a3b8;
-            --border-subtle: rgba(255, 255, 255, 0.1);
+            --live-accent-dim: rgba(0, 232, 0, 0.15);
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+
+            /* Gradiente Cinético */
+            --kinetic-gradient: linear-gradient(90deg, #ffffff 0%, #cccccc 50%, #00e800 100%);
+
+            /* Bordas */
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-active: rgba(0, 232, 0, 0.4);
+
+            /* Animação */
+            --ease-fluid: cubic-bezier(0.4, 0.0, 0.2, 1);
+            --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         html {
@@ -39,21 +56,91 @@
 
         body {
             background-color: var(--live-deep);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
             font-family: 'Poppins', sans-serif;
-            color: var(--text-main);
-            line-height: 1.7;
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='46' viewBox='0 0 40 46' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23ffffff' stroke-width='0.5' stroke-opacity='0.08'%3E%3Cpath d='M0 46V23l20-11.5L40 23v23L20 34.5zM0 23L20 11.5 40 23 20 34.5zM20 11.5L0 0 40 0z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             background-attachment: fixed;
+            overflow-x: hidden;
         }
 
+        /* --- TABS SYSTEM --- */
+        .tabs-nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(6, 25, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 1rem 0;
+        }
+
+        .tabs-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .tab-trigger {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .tab-trigger.active {
+            color: var(--live-accent);
+        }
+
+        .tab-trigger.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--live-accent);
+            box-shadow: 0 0 10px var(--live-accent);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- MANUAL DO MAESTRO STYLES (Existing) --- */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 25px;
         }
 
-        /* HEADER */
-        header {
+        header.manual-header {
             min-height: 70vh;
             display: flex;
             flex-direction: column;
@@ -65,7 +152,7 @@
             padding: 80px 20px;
         }
 
-        h1 {
+        h1.manual-title {
             font-size: clamp(40px, 7vw, 80px);
             background: var(--kinetic-gradient);
             -webkit-background-clip: text;
@@ -87,39 +174,12 @@
             margin-bottom: 25px;
         }
 
-        /* NAVEGAÇÃO LATERAL */
-        .nav-dots {
-            position: fixed;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 100;
-        }
-
-        .nav-dots a {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border-subtle);
-            border: 1px solid var(--live-accent);
-            transition: 0.3s ease;
-        }
-
-        .nav-dots a:hover {
-            background: var(--live-accent);
-            transform: scale(1.3);
-        }
-
-        /* SEÇÕES */
-        section {
+        section.manual-section {
             padding: 100px 0;
             border-bottom: 1px solid var(--border-subtle);
         }
 
-        h2 {
+        h2.manual-h2 {
             font-size: clamp(28px, 4vw, 42px);
             color: var(--text-light);
             margin-bottom: 30px;
@@ -128,7 +188,7 @@
             gap: 20px;
         }
 
-        h2 i {
+        h2.manual-h2 i {
             color: var(--live-accent);
             font-size: 0.8em;
         }
@@ -143,7 +203,6 @@
             font-style: italic;
         }
 
-        /* CARDS TÉCNICOS */
         .tech-card {
             background: var(--live-glass);
             border: 1px solid var(--border-subtle);
@@ -188,7 +247,6 @@
             letter-spacing: 1px;
         }
 
-        /* LISTAS TÉCNICAS */
         ul.check-list {
             list-style: none;
         }
@@ -224,7 +282,6 @@
             border: 1px solid var(--live-accent-dim);
         }
 
-        /* IMAGENS */
         .img-box {
             width: 100%;
             border-radius: 20px;
@@ -247,7 +304,270 @@
             transform: scale(1.03);
         }
 
-        /* FOOTER */
+        /* --- CRONOGRAMA DE ESTOQUE STYLES (User Request) --- */
+        .cronograma-container {
+            padding: 2rem 0;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 232, 0, 0.1);
+            color: var(--live-accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 1px solid rgba(0, 232, 0, 0.2);
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-action:hover {
+            background: rgba(0, 232, 0, 0.2);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 232, 0, 0.1);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-secondary);
+            padding: 0.4rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+            margin-top: 1rem;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--live-accent);
+            color: var(--live-accent);
+        }
+
+        .procedure-box {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 1px dashed var(--border-subtle);
+        }
+
+        .procedure-step {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            background: var(--live-accent);
+            color: #000;
+            font-weight: 800;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .step-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .divergence-alert {
+            background: rgba(255, 69, 58, 0.1);
+            border-left: 3px solid #ff453a;
+            padding: 0.75rem;
+            font-size: 0.85rem;
+            color: #ffcccb;
+            margin-top: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .efficiency-alert {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+            padding: 0.5rem 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 2px solid var(--live-accent);
+            border-radius: 0 4px 4px 0;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .efficiency-alert strong {
+            color: var(--live-accent);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--live-accent-dim);
+            color: var(--live-accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 99px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(0, 232, 0, 0.2);
+        }
+
+        .team-names {
+            font-size: 1.25rem;
+            font-weight: 500;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .time-block {
+            min-width: 120px;
+            text-align: right;
+        }
+
+        .time {
+            font-weight: 700;
+            color: var(--live-accent);
+            font-size: 1.1rem;
+        }
+
+        .phase {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .content h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .content ul {
+            list-style: none;
+        }
+
+        .content li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.85rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .content li::before {
+            content: "•";
+            color: var(--live-accent);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .instruction {
+            display: block;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 4px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-left: 2px solid var(--text-tertiary);
+        }
+
+        .logistics-box {
+            background: linear-gradient(90deg, rgba(0, 232, 0, 0.05) 0%, transparent 100%);
+            border-left: 4px solid var(--live-accent);
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+
+        .logistics-title {
+            color: var(--live-accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .weekly-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .day-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1.25rem;
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .day-card:hover {
+            border-color: var(--border-active);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .day-header {
+            color: var(--live-accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .day-focus {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .day-action {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- FOOTER --- */
         footer {
             padding: 100px 0;
             text-align: center;
@@ -261,16 +581,24 @@
         }
 
         @media (max-width: 900px) {
-            h1 {
-                font-size: 45px;
+            .tabs-container {
+                gap: 1rem;
             }
 
-            .tech-card {
-                padding: 30px;
+            .tab-trigger {
+                font-size: 0.9rem;
             }
 
-            .nav-dots {
-                display: none;
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .time-block {
+                text-align: left;
+                display: flex;
+                align-items: baseline;
+                gap: 0.5rem;
             }
         }
     </style>
@@ -278,247 +606,305 @@
 
 <body>
 
-    <nav class="nav-dots">
-        <a href="#intro" title="O Maestro"></a>
-        <a href="#modulo1" title="1. Diário"></a>
-        <a href="#modulo2" title="2. Semanal"></a>
-        <a href="#modulo3" title="3. Mensal"></a>
-        <a href="#modulo4" title="4. Liderança"></a>
-        <a href="#modulo5" title="5. RH"></a>
-        <a href="#modulo6" title="6. Inteligência"></a>
-        <a href="#modulo7" title="7. Estoque"></a>
-        <a href="#modulo8" title="8. Financeiro"></a>
-        <a href="#modulo9" title="9. Diplomata"></a>
+    <nav class="tabs-nav">
+        <div class="tabs-container">
+            <button class="tab-trigger active" onclick="switchTab('manual')">Manual do Maestro</button>
+            <button class="tab-trigger" onclick="switchTab('cronograma')">Cronograma de Estoque</button>
+        </div>
     </nav>
 
-    <header id="intro">
+    <!-- CONTENT: MANUAL DO MAESTRO -->
+    <main id="manual" class="tab-content active">
+        <header class="manual-header">
+            <div class="container">
+                <span class="badge">Live Consultoria V6.0</span>
+                <h1 class="manual-title">O MAESTRO DA LOJA</h1>
+                <p class="subtitle" style="font-size: 26px; color: #a0aec0; max-width: 850px;">A fundação de um negócio
+                    sólido reside na disciplina tática do seu gestor.</p>
+
+                <div class="img-box" style="max-width: 900px; margin-top: 50px;">
+                    <img src="https://images.unsplash.com/photo-1556740734-7f9a2b77d5ec?q=80&w=1200&auto=format&fit=crop"
+                        alt="[Estratégia de Negócios Varejo]"
+                        onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Estrategia+Varejo'">
+                </div>
+
+                <p style="font-family: 'Merriweather', serif; font-size: 18px; margin-top: 30px; max-width: 700px;">
+                    "Pense nestas atribuições como a fundação de uma casa: o cliente não vê a fundação, mas sem ela, as
+                    paredes — as vendas e o atendimento — desmoronam."
+                </p>
+            </div>
+        </header>
+
         <div class="container">
-            <span class="badge">Live Consultoria V6.0</span>
-            <h1>O MAESTRO DA LOJA</h1>
-            <p class="subtitle" style="font-size: 26px; color: #a0aec0; max-width: 850px;">A fundação de um negócio
-                sólido reside na disciplina tática do seu gestor.</p>
+            <section id="modulo1" class="manual-section">
+                <h2 class="manual-h2"><i class="fa-solid fa-clock"></i> Módulo 1: O Compasso Diário</h2>
+                <p class="module-intro">"O dia a dia é o ensaio geral. Sem afinação rigorosa antes da abertura, o
+                    concerto
+                    será um desastre."</p>
 
-            <div class="img-box" style="max-width: 900px; margin-top: 50px;">
-                <!-- Updated Image for Store Manager Context -->
-                <img src="https://images.unsplash.com/photo-1556740734-7f9a2b77d5ec?q=80&w=1200&auto=format&fit=crop"
-                    alt="[Estratégia de Negócios Varejo]"
-                    onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Estrategia+Varejo'">
-            </div>
+                <div class="tech-card">
+                    <div class="step-title"><span>1. Abertura e Inspeção 5S</span><small>08:00 - 08:30</small></div>
+                    <div class="why-tag">FUNDAÇÃO: Padrão de Excelência</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Visão Externa:</strong> Observe a vitrina com os olhos do cliente. Vidros limpos
+                                e
+                                luzes focadas valorizam o produto em 50%.</li>
+                            <li><strong>Sensos de Ordenação:</strong> Balcão limpo, sem casacos ou chávenas de café. O
+                                balcão é ferramenta de venda.</li>
+                            <li><strong>Check de Infraestrutura:</strong> Teste terminais e sistemas. Não espere a fila
+                                formar para descobrir um erro técnico.</li>
+                        </ul>
+                    </div>
+                </div>
 
-            <p style="font-family: 'Merriweather', serif; font-size: 18px; margin-top: 30px; max-width: 700px;">
-                "Pense nestas atribuições como a fundação de uma casa: o cliente não vê a fundação, mas sem ela, as
-                paredes — as vendas e o atendimento — desmoronam."
-            </p>
+                <div class="tech-card">
+                    <div class="step-title"><span>2. Briefing Matinal</span><small>08:30 - 08:45</small></div>
+                    <p>O briefing não é para "dar avisos", é para definir a estratégia de vitória do dia.</p>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Produtos Foco:</strong> Repasse os itens de foco **definidos pela gestão**.</li>
+                            <li><strong>Metas do Dia:</strong> Distribua o objetivo global por cada vendedor de forma
+                                clara.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="modulo2" class="manual-section">
+                <h2 class="manual-h2"><i class="fa-solid fa-calendar-check"></i> Módulo 2: O Ajuste das Velas</h2>
+                <div class="tech-card">
+                    <div class="step-title"><span>Visual Merchandising & Vitrina</span></div>
+                    <div class="img-box">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop"
+                            alt="Visual Merchandising Premium"
+                            onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Prateleira+de+Panelas'">
+                    </div>
+                    <div class="why-tag">FUNDAÇÃO: Renovação do Desejo</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Troca Semanal:</strong> Altere os cenários toda a segunda-feira. Uma vitrina
+                                parada
+                                vira paisagem.</li>
+                            <li><strong>Cross-Merchandising:</strong> Ao expor panelas, coloque tábuas e utensílios ao
+                                lado
+                                para aumentar o ticket.</li>
+                            <li><strong>Hierarquia Visual:</strong> Use diferentes alturas para guiar o olhar do
+                                cliente.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="modulo7" class="manual-section">
+                <h2 class="manual-h2"><i class="fa-solid fa-boxes-stacked"></i> Módulo 7: Operações Logísticas e Stock
+                </h2>
+                <div class="tech-card">
+                    <div class="step-title"><span>Recebimento Impecável</span></div>
+                    <div class="why-tag">FUNDAÇÃO: Proteção do Ativo</div>
+                    <div class="instruction-block">
+                        <ul class="check-list">
+                            <li><strong>Conferência Física:</strong> O gerente deve validar quantidade e estado das
+                                embalagens comparando com a Nota Fiscal (NFe).</li>
+                            <li><strong>Tratativa de Erros:</strong> Se houver falta ou violação, anote na NFe e
+                                comunique o
+                                financeiro e compras imediatamente.</li>
+                            <li><strong>Venda Inteligente:</strong> Incentive a equipa a vender mercadorias antigas; o
+                                estoque parado é dinheiro que dorme.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <p style="text-align: center; color: var(--text-dim); margin: 2rem 0;">(Outros módulos disponíveis no manual
+                completo)</p>
         </div>
-    </header>
+    </main>
 
-    <div class="container">
+    <!-- CONTENT: CRONOGRAMA DE ESTOQUE -->
+    <main id="cronograma" class="tab-content">
+        <div class="container cronograma-container">
+            <header style="text-align: center; margin-bottom: 3rem;">
+                <h1>Gestão de Estoque 5S</h1>
+                <p class="subtitle">Casa Goianita • Manual de Operações & Rotinas 2026</p>
+                <div style="margin-top: 1.5rem;">
+                    <a href="https://drive.google.com/file/d/1LezPS56TU-UYPzIyGKTDiz_PAZUsuuh2/view?usp=sharing"
+                        target="_blank" class="btn-action">
+                        <i data-lucide="book-open" size="18"></i> Acessar Manual 5S Completo
+                    </a>
+                </div>
+            </header>
 
-        <!-- MÓDULO 1: DIÁRIO -->
-        <section id="modulo1">
-            <h2><i class="fa-solid fa-clock"></i> Módulo 1: O Compasso Diário</h2>
-            <p class="module-intro">"O dia a dia é o ensaio geral. Sem afinação rigorosa antes da abertura, o concerto
-                será um desastre."</p>
+            <section class="team-grid">
+                <div class="glass-card">
+                    <div class="team-badge"><i data-lucide="map-pin" size="14"></i> &nbsp; Unidade T4</div>
+                    <div class="team-names">Lucas</div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Responsável Geral T4
+                    </p>
+                </div>
+                <div class="glass-card">
+                    <div class="team-badge"><i data-lucide="map-pin" size="14"></i> &nbsp; Unidade 85</div>
+                    <div class="team-names">Márcio & Jayme</div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">Responsáveis Gerais
+                        85</p>
+                </div>
+            </section>
 
-            <div class="tech-card">
-                <div class="step-title"><span>1. Abertura e Inspeção 5S</span><small>08:00 - 08:30</small></div>
-                <div class="why-tag">FUNDAÇÃO: Padrão de Excelência</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Visão Externa:</strong> Observe a vitrina com os olhos do cliente. Vidros limpos e
-                            luzes focadas valorizam o produto em 50%.</li>
-                        <li><strong>Sensos de Ordenação:</strong> Balcão limpo, sem casacos ou chávenas de café. O
-                            balcão é ferramenta de venda.</li>
-                        <li><strong>Check de Infraestrutura:</strong> Teste terminais e sistemas. Não espere a fila
-                            formar para descobrir um erro técnico.</li>
+            <section>
+                <div class="glass-card">
+                    <h2><i data-lucide="truck" color="#00e800"></i> Protocolo de Logística e Motorista</h2>
+                    <div class="logistics-box">
+                        <div class="logistics-title">
+                            <i data-lucide="alert-circle" size="18"></i> Regra de Ouro: Preparação Antecipada
+                        </div>
+                        <p style="font-size: 0.95rem; color: var(--text-secondary);">
+                            A coleta do motorista é <strong>flexível</strong> (pode ocorrer a qualquer hora conforme a
+                            rota), mas a preparação do estoque é <strong>fixa (manhã)</strong>.
+                        </p>
+                    </div>
+                    <ul style="color: var(--text-secondary); padding-left: 1.5rem; margin-top: 1rem;">
+                        <li style="margin-bottom: 0.5rem;"><strong>08:00 - 09:30:</strong> Horário obrigatório para
+                            separar transferências e entradas no sistema, independente de onde o motorista esteja.</li>
+                        <li style="margin-bottom: 0.5rem;"><strong>Modus Operandi:</strong> Quando o motorista chegar
+                            para coleta (seja 10h ou 14h), a carga já deve estar separada, conferida e na zona de
+                            expedição. O motorista não espera separação.</li>
+                        <li><strong>Coletas de Clientes:</strong> Itens vendidos para retirada em outra loja têm
+                            prioridade absoluta na separação matinal.</li>
                     </ul>
                 </div>
-            </div>
+            </section>
 
-            <div class="tech-card">
-                <div class="step-title"><span>2. Briefing Matinal</span><small>08:30 - 08:45</small></div>
-                <p>O briefing não é para "dar avisos", é para definir a estratégia de vitória do dia.</p>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Produtos Foco:</strong> Repasse os itens de foco **definidos pela gestão**.</li>
-                        <li><strong>Metas do Dia:</strong> Distribua o objetivo global por cada vendedor de forma clara.
-                        </li>
-                    </ul>
+            <section>
+                <div class="glass-card">
+                    <h2><i data-lucide="clock" color="#00e800"></i> Rotina Diária Padrão (Seg-Sex)</h2>
+
+                    <div class="timeline-item">
+                        <div class="time-block">
+                            <div class="time">08:00 - 09:30</div>
+                            <div class="phase">Bloco Crítico</div>
+                        </div>
+                        <div class="content">
+                            <h3>Transferências & Expedição</h3>
+                            <ul>
+                                <li>Verificar Dashboard de Transferências (Pedidos da 85/T4).
+                                    <span class="instruction">Na prática: Acesse o sistema > Transferências > Filtre
+                                        "Aguardando Separação".</span>
+                                </li>
+                                <li>Separar itens físicos e dar baixa imediata via Coletor.
+                                    <span class="instruction">Na prática: Bipe item por item antes de colocar na caixa.
+                                        Nunca dê baixa em lote sem conferir.</span>
+                                </li>
+                                <li>Organizar zona de expedição para chegada do motorista.
+                                    <span class="instruction">Na prática: Identifique as caixas com fita adesiva ou
+                                        canetão (ex: DESTINO T4) e deixe na área de saída.</span>
+                                </li>
+                            </ul>
+                            <div class="efficiency-alert">
+                                <i data-lucide="zap" size="16"></i>
+                                <span>
+                                    <strong>Nota de Eficiência:</strong> Esta atividade pode ser concluída em menos
+                                    tempo. Inicie imediatamente o próximo bloco (Recebimento) assim que finalizar esta
+                                    etapa.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="time-block">
+                            <div class="time">09:00 - 11:00</div>
+                            <div class="phase">Recebimento</div>
+                        </div>
+                        <div class="content">
+                            <h3>Entrada Inteligente (XML)</h3>
+                            <ul>
+                                <li><strong>Responsabilidade:</strong> Kuruka (Compras) insere o XML no sistema.
+                                    <span class="instruction">Na prática: Confirme com Compras se a nota já foi
+                                        importada antes de começar a bipar.</span>
+                                </li>
+                                <li>Conferência Cega (Bipagem) obrigatória.
+                                    <span class="instruction">Na prática: Use o coletor. O sistema deve apitar "Verde"
+                                        para Ok e "Vermelho" para divergência.</span>
+                                </li>
+                                <li><strong>Seiri (Triagem):</strong> Identificar avarias no ato da entrada.
+                                    <span class="instruction">Na prática: Manuseie com cuidado extremo. Não balance as
+                                        caixas. Abra e verifique visualmente trincas ou barulho de cacos soltos.</span>
+                                </li>
+                                <li>Endereçamento imediato: Bipar Produto + Prateleira.
+                                    <span class="instruction">Na prática: Guardou? Bipe o produto e em seguida a
+                                        etiqueta da prateleira para vincular o endereço.</span>
+                                </li>
+                            </ul>
+
+                            <button onclick="toggleProcedure()" class="btn-ghost">
+                                <i data-lucide="clipboard-check" size="16"></i> Protocolo Sistêmico de Conferência
+                                (Clique para Abrir)
+                            </button>
+
+                            <div id="procedure-box" class="procedure-box">
+                                <div class="procedure-step">
+                                    <div class="step-num">1</div>
+                                    <div class="step-text">
+                                        <strong>Envio das Notas (Kuruka/Compras)</strong>
+                                        Vá em <em>Menu > Suprimentos > Notas de Entrada</em>. Selecione as notas e
+                                        clique em "Mais Ações" > "Enviar para conferência".
+                                    </div>
+                                </div>
+                                <div class="procedure-step">
+                                    <div class="step-num">2</div>
+                                    <div class="step-text">
+                                        <strong>Recebimento de Volumes (Caixas)</strong>
+                                        Acesse <em>Menu > Suprimentos > Conferência de Compra</em>. Na aba "Aguardando
+                                        entrada", clique em "Receber mercadorias".
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- MÓDULO 2: SEMANAL -->
-        <section id="modulo2">
-            <h2><i class="fa-solid fa-calendar-check"></i> Módulo 2: O Ajuste das Velas</h2>
-            <div class="tech-card">
-                <div class="step-title"><span>Visual Merchandising & Vitrina</span></div>
-                <div class="img-box">
-                    <!-- Updated Image for High-end Retail Visual Merchandising -->
-                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1200&auto=format&fit=crop"
-                        alt="Visual Merchandising Premium"
-                        onerror="this.src='https://via.placeholder.com/1200x450/06192a/00e800?text=Prateleira+de+Panelas'">
+            <section>
+                <div class="glass-card">
+                    <h2><i data-lucide="calendar" color="#00e800"></i> Foco Semanal (Rodízio 5S)</h2>
+                    <div class="weekly-grid">
+                        <div class="day-card">
+                            <div class="day-header">Segunda <i data-lucide="clipboard-list" size="16"></i></div>
+                            <div class="day-focus">Auditoria de Transferências</div>
+                            <div class="day-action">Revisar pendências de Sábado/Domingo.</div>
+                        </div>
+                        <div class="day-card">
+                            <div class="day-header">Terça <i data-lucide="package" size="16"></i></div>
+                            <div class="day-focus">Zona Baixa (Pesados)</div>
+                            <div class="day-action">Eletrodomésticos e Caixas Fechadas.</div>
+                        </div>
+                        <div class="day-card">
+                            <div class="day-header">Quarta <i data-lucide="grid" size="16"></i></div>
+                            <div class="day-focus">Zona Média (Miudezas)</div>
+                            <div class="day-action">Talheres e Utensílios.</div>
+                        </div>
+                        <div class="day-card">
+                            <div class="day-header">Quinta <i data-lucide="wine" size="16"></i></div>
+                            <div class="day-focus">Zona Alta & Vidros</div>
+                            <div class="day-action">Cristais e Taças.</div>
+                        </div>
+                        <div class="day-card">
+                            <div class="day-header">Sexta <i data-lucide="tag" size="16"></i></div>
+                            <div class="day-focus">Outlet & Curva A</div>
+                            <div class="day-action">Levar itens da "Caixa Oportunidade" para Gerência.</div>
+                        </div>
+                        <div class="day-card" style="border-color: var(--live-accent-dim);">
+                            <div class="day-header">Sábado <i data-lucide="shopping-bag" size="16"></i></div>
+                            <div class="day-focus">Suporte Total à Venda</div>
+                            <div class="day-action">Foco exclusivo em agilidade de entrega no balcão.</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="why-tag">FUNDAÇÃO: Renovação do Desejo</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Troca Semanal:</strong> Altere os cenários toda a segunda-feira. Uma vitrina parada
-                            vira paisagem.</li>
-                        <li><strong>Cross-Merchandising:</strong> Ao expor panelas, coloque tábuas e utensílios ao lado
-                            para aumentar o ticket.</li>
-                        <li><strong>Hierarquia Visual:</strong> Use diferentes alturas para guiar o olhar do cliente.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- MÓDULO 3: MENSAL -->
-        <section id="modulo3">
-            <h2><i class="fa-solid fa-chart-line"></i> Módulo 3: A Colheita e o Plantio</h2>
-            <p class="module-intro">"O fechamento exige precisão analítica para garantir que o físico bata com o
-                financeiro."</p>
-
-            <div class="tech-card">
-                <div class="step-title"><span>Inventário e Resultados</span></div>
-                <div class="why-tag">FUNDAÇÃO: Acuracidade Financeira</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Contagem Rotativa:</strong> Coordene a contagem por categorias para evitar furos de
-                            estoque.</li>
-                        <li><strong>Regra PEPS:</strong> Garanta que o estoque antigo saia primeiro (Primeiro que Entra,
-                            Primeiro que Sai).</li>
-                        <li><strong>Relatórios à Diretoria:</strong> Elabore análises de desempenho vs metas (Mínima,
-                            Básica e Master).</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- MÓDULO 4: LIDERANÇA -->
-        <section id="modulo4">
-            <h2><i class="fa-solid fa-user-tie"></i> Módulo 4: O Comportamento do Líder</h2>
-            <div class="tech-card">
-                <div class="step-title"><span>Regras de Ouro</span></div>
-                <div class="why-tag">FUNDAÇÃO: Autoridade e Cultura</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Disciplina Inegociável:</strong> Normas não são sugestões. Manter as regras é o que
-                            sustenta o comando.</li>
-                        <li><strong>Seja o Exemplo:</strong> A equipa é o reflexo da rotina e da postura do seu gestor.
-                        </li>
-                        <li><strong>Inteligência Emocional:</strong> Mantenha a calma em crises; você está sempre sob
-                            observação no palco.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- MÓDULO 5: RH -->
-        <section id="modulo5">
-            <h2><i class="fa-solid fa-users-gear"></i> Módulo 5: Administração de Pessoal e RH</h2>
-            <p class="module-intro">"O gerente é o primeiro filtro da empresa. Se a porta falha, a engrenagem humana
-                adoece."</p>
-
-            <div class="tech-card">
-                <div class="step-title"><span>Recrutamento e Integração</span></div>
-                <div class="why-tag">FUNDAÇÃO: Qualidade do Capital Humano</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Checagem de Referências:</strong> **Obrigatório.** Ligue para antigos empregadores.
-                            Muita informação vem em 3 minutos de chamada.</li>
-                        <li><strong>Onboarding (Acolhimento):</strong> Acompanhe o novato passo a passo. Garanta que ele
-                            absorva a técnica e a cultura da marca.</li>
-                        <li><strong>Gestão Trabalhista:</strong> Controle rigoroso de ponto, escalas e folgas para
-                            evitar passivos jurídicos.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- MÓDULO 6: MERCADO -->
-        <section id="modulo6">
-            <h2><i class="fa-solid fa-chess-knight"></i> Módulo 6: Inteligência de Mercado</h2>
-            <div class="tech-card">
-                <div class="step-title"><span>Monitoramento Estratégico</span></div>
-                <div class="why-tag">FUNDAÇÃO: Vantagem Competitiva</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Visão de Tabuleiro:</strong> Conheça os vizinhos concorrentes. Pesquise preços,
-                            sortimento e qualidade do serviço deles mensalmente.</li>
-                        <li><strong>Planeamento de Promoções:</strong> Antes de lançar ações, verifique o nível de
-                            estoque para não frustrar o cliente.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- MÓDULO 7: ESTOQUE -->
-        <section id="modulo7">
-            <h2><i class="fa-solid fa-boxes-stacked"></i> Módulo 7: Operações Logísticas e Stock</h2>
-            <div class="tech-card">
-                <div class="step-title"><span>Recebimento Impecável</span></div>
-                <div class="why-tag">FUNDAÇÃO: Proteção do Ativo</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Conferência Física:</strong> O gerente deve validar quantidade e estado das
-                            embalagens comparando com a Nota Fiscal (NFe).</li>
-                        <li><strong>Tratativa de Erros:</strong> Se houver falta ou violação, anote na NFe e comunique o
-                            financeiro e compras imediatamente.</li>
-                        <li><strong>Venda Inteligente:</strong> Incentive a equipa a vender mercadorias antigas; o
-                            estoque parado é dinheiro que dorme.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- MÓDULO 8: FINANCEIRO -->
-        <section id="modulo8">
-            <h2><i class="fa-solid fa-file-invoice-dollar"></i> Módulo 8: Gestão Financeira</h2>
-            <div class="tech-card">
-                <div class="step-title"><span>Controle de Caixa e Despesas</span></div>
-                <div class="why-tag">FUNDAÇÃO: Saúde do Fluxo de Caixa</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Fechamento Pessoal:</strong> Fiscalize o caixa diariamente. Reporte discrepâncias ao
-                            supervisor sem demora.</li>
-                        <li><strong>Envio de Notas:</strong> Envie todas as notas fiscais para o financeiro no mesmo dia
-                            do recebimento.</li>
-                        <li><strong>Rigor com Despesas:</strong> Controle gastos desnecessários e exija comprovantes
-                            fiscais ou recibos formais (CPF/CNPJ).</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- MÓDULO 9: CONFLITOS -->
-        <section id="modulo9" style="border-bottom: none;">
-            <h2><i class="fa-solid fa-handshake-angle"></i> Módulo 9: Gestão de Conflitos e Relacionamento</h2>
-            <div class="tech-card">
-                <div class="step-title"><span>Tratativa de Reclamações</span></div>
-                <div class="why-tag">FUNDAÇÃO: Fidelização (LTV)</div>
-                <div class="instruction-block">
-                    <ul class="check-list">
-                        <li><strong>Assuma a Frente:</strong> Reclamações críticas devem ser resolvidas pessoalmente
-                            pelo gerente. O cliente quer sentir a autoridade da solução.</li>
-                        <li><strong>Troca como Venda:</strong> Mude o paradigma: a troca é a melhor chance de vender
-                            complementos e fidelizar.</li>
-                        <li><strong>Domínio Político:</strong> Tenha pleno conhecimento da política de trocas para ser
-                            justo e firme nos padrões da empresa.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="tech-card" style="margin-top: 40px; text-align: center; background: var(--live-accent-dim);">
-                <h3
-                    style="font-family: 'Merriweather', serif; font-style: italic; color: var(--live-accent); font-size: clamp(20px, 3vw, 26px);">
-                    "Dominar a operação de ponta a ponta é o que transforma o chefe de vendas num verdadeiro Gestor de
-                    Negócios."
-                </h3>
-            </div>
-        </section>
-
-    </div>
+            </section>
+        </div>
+    </main>
 
     <footer>
         <div class="container">
@@ -531,6 +917,26 @@
         </div>
     </footer>
 
+    <script>
+        lucide.createIcons();
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-trigger').forEach(trigger => {
+                trigger.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function toggleProcedure() {
+            const box = document.getElementById('procedure-box');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
 </body>
 
 </html>
